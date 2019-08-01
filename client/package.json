@@ -2,6 +2,7 @@
   "name": "virtual-fridge",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://localhost:3001",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.6.7",
