@@ -1,0 +1,10 @@
+.Container {
+    margin: 0 auto !important;
+    text-align: center;
+   display: flex;
+   justify-content: space-evenly;
+    background-color: #f7ede2;
+    flex-wrap: wrap;
+     height: 100vh;
+     /* overflow: auto; */
+}
