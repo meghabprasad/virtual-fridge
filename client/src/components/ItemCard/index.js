@@ -1,57 +1,87 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
-const useStyles = makeStyles({
-    card: {
-        maxWidth: 345,
-    },
-    media: {
-        height: 140,
-    },
-});
+const useStyles = makeStyles(theme => ({
+  card: {
+      maxHeight: "5%",
+    maxWidth: "10%"
+  },
+  media: {
+    height: 0,
+    paddingTop: "100%" // 16:9
 
-export default function MediaCard() {
-    const classes = useStyles();
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
+  avatar: {
+    backgroundColor: red[500]
+  },
+  image: {
+      width: "100px",
+      height: "100px"
+  }
+}));
 
-    return (
-        <Card className={classes.card}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
-          </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
-          </Typography>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary">
-                    <i class="material-icons">add</i><i class="material-icons">local_grocery_store</i>
-                </Button>
-                <Button size="small" color="primary">
-                    <i class="material-icons">add</i> <i class="material-icons">kitchen</i>
-                </Button>
-                <Button size="small" color="primary">
-                    <i class="material-icons">remove</i> <i class="material-icons">local_grocery_store</i>
-                </Button>
-                <Button size="small" color="primary">
-                <i class="material-icons">remove</i> <i class="material-icons">kitchen</i>
-                </Button>
-            </CardActions>
-        </Card>
-    );
+export default function ItemCard(props) {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+
+  function handleExpandClick() {
+    setExpanded(!expanded);
+  }
+
+  return (
+    <Card className={classes.card}>
+      <CardHeader
+        action={<IconButton aria-label="settings" />}
+        title={props.name}
+      />
+      <CardMedia className={classes.image}
+        className={classes.media}
+        image={props.imageLink}
+        title={props.name}
+      />
+
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites" />
+        <IconButton aria-label="share" />
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Quantity: {props.quantity}</Typography>
+          <Typography paragraph>Expires in {props.expiration} days!</Typography>
+        </CardContent>
+      </Collapse>
+    </Card>
+  );
 }
