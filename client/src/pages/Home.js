@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
+import Navbar from "../components/Navbar"
 
 function Home (){
     return (
         <div> 
+            <Navbar />
             <h1> This is the Home page</h1>
             <SearchItems />
             <ItemCard imageLink="https://images.vexels.com/media/users/3/128847/isolated/preview/0f60c4d492e78879ce6b7f93e501f1da-strawberry-fruit-circle-icon-by-vexels.png"name="Strawberry" quantity="10" expiration="2"/>
