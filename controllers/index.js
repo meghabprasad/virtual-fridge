@@ -1,4 +1,4 @@
-const db = requre('../models');
+const db = require('../models');
 
 // TODO: These routes are just placeholders, the queries per request will almost definitely need modifying according to the structure of our database.
 
@@ -6,7 +6,7 @@ module.exports = {
     // Fridge Routes
     getFridge: function (req, res) {
         db.Fridge
-            .find(req.query)
+            .find({})
             .sort({ date: -1 }) // Sorts by recently added first
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -54,7 +54,7 @@ module.exports = {
     },
     getFamily: function (req, res) {
         db.Family
-            .find(req.query)
+            .find({})
             .sort({ date: 1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Fridge = new Schema({
-    ref: "Family",
-    // family_id: { type: String },
-    // user_id: { type: String, required: true },
+const fridgeSchema = new Schema({
+    family_id: { type: String },
+    user_id: { type: String, required: true },
     items: {
-        type: String
+        type: String, 
+        required: false
     },
     date: {
         type: Date,
@@ -13,5 +13,5 @@ const Fridge = new Schema({
     }
 })
 
-const Fridge = mongoose.model("Fridge", Fridge);
+const Fridge = mongoose.model("Fridge", fridgeSchema);
 module.exports = Fridge;
