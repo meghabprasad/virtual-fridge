@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the collection and inserts the books below
+// This file empties the collection and inserts the data below
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualFridge", {useNewUrlParser: true});
 
