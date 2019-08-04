@@ -6,8 +6,7 @@ module.exports = {
     // Fridge Routes
     getFridge: function (req, res) {
         db.Fridge
-            .find({})
-            .sort({ date: -1 }) // Sorts by recently added first
+            .find({'user_id': req.params.id})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -25,8 +24,10 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     updateFridge: function (req, res) { // Update may provide better functionality when updating the list of ingredients contained within fridges. ie Load the array into this.state to render onto page => update this.state after adding or removing an item => push the new updated this.state into the database, updating the key of ingredients/products with the new one with the updated item array.
+        const filter = { 'user_id': req.params.id}
+        const update = { 'items': req.body }
         db.Fridge
-            .findOneAndUpdate({ _id: req.params.id }) // Maybe change key to ingredients in order to update the ingredients array.
+            .findOneAndUpdate({ filter, update }) // Maybe change key to ingredients in order to update the ingredients array.
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
@@ -65,6 +66,28 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
 
+    },
+
+    // Shopping/Grocery List Routes
+    createList: function (req, res) {
+        db.ShoppingList
+            .create(req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
+    getList: function (req, res) {
+        db.ShoppingList
+            .find({ 'user_id': req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
+    updateList: function (req, res) {
+        const filter = { 'user_id': req.params.id }
+        const update = { 'items': req.body }
+        db.ShoppingList
+            .findOneAndUpdate({ filter, update })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
     }
 
 

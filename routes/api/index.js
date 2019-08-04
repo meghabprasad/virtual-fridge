@@ -4,15 +4,15 @@ const dbControllers = require("../../controllers");
 // Fridge routes
 ////////////////
 
-// /api/fridge/
-router.route("/fridge")
-    .get(dbControllers.getFridge)
-    .post(dbControllers.addFridge);
+// /api/fridge/update
+router.route("/fridge/update/")
 
 
 // /api/fridge/:id
 router.route("/fridge/:id")
-    .put(dbControllers.updateFridge)
+    .put(dbController.updateFridge)
+    .post(dbControllers.addFridge)
+    .get(dbControllers.getFridge)
     .delete(dbControllers.removeFridge);
 
 ///////////////
@@ -20,9 +20,12 @@ router.route("/fridge/:id")
 ///////////////
 
 // /api/newuser
-router.route("/newuser")
+router.route("/user")
     .post(dbControllers.createUser)
     .put(dbControllers.updateUserFamily)
+
+router.route("/user/:id")
+
 
 
 /////////////////
@@ -38,6 +41,16 @@ router.route("/family")
 // /api/family/:id
 router.route("/family/:id")
     .put(dbControllers.updateFamilyMembers)
+
+///////////////////////
+// ShoppingList Routes
+///////////////////////
+
+// /api/shoppinglist/:id
+router.route("/shoppinglist/:id")
+    .post(dbControllers.createList)
+    .get(dbControllers.getList)
+    .put(dbControllers.updateList)
 
 
 module.exports = router;
