@@ -16,32 +16,6 @@ const config = {
   client_id: '0oa11poaf4Foygnfy357'
 }
 
-// class App extends Component {
-//   render(){
-//   return (
-//     <Router>
-//       <div>
-
-//       <Security issuer={config.issuer}
-//                   client_id={config.client_id}
-//                   redirect_uri={config.redirect_uri}
-//         >
-
-//           <Switch>
-//           <Route path='/' exact={true} component={Login}/>
-//           <Route path='/implicit/callback' component={ImplicitCallback}/>
-//           <Route exact path="/home" component={Home} />
-//           <Route exact path="/recipes" component={Recipes} />
-//           <Route exact path="/grocery" component={Grocery} />
-//           <Route component={NoMatch} />
-//         </Switch>
-//         </Security>
-//       </div>
-//     </Router>
-//   );
-//   }
-// }
-
 class App extends Component {
   render() {
     return (
