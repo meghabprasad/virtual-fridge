@@ -5,6 +5,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import axios from "axios";
+
+//something about how the children don't all have a unique key
 
 
 const ingredientsStyle = {
@@ -18,7 +21,10 @@ const ingredientsStyle = {
 
 class Recipes extends Component {
     state = {
-        ingredients: []
+        ingredients: [],
+        displayResults: false,
+        results: [], 
+        queryURL: ""
     }
 
 
@@ -36,8 +42,9 @@ class Recipes extends Component {
             newState.ingredients.push(newItem)
             this.setState(newState)
             console.log(`You've added ${newItem} to your search query.`, this.state.ingredients)
-            
-            console.log('QueryURL', this.createQuery())
+
+            //console.log('QueryURL', this.createQuery())
+            this.createQuery()
         }
     };
 
@@ -46,7 +53,26 @@ class Recipes extends Component {
         const queryParams = this.state.ingredients.join('+,')
         const queryURL = ('https://api.spoonacular.com/recipes/findByIngredients?ingredients=' + queryParams + apiKey).split(' ').join('+')
 
-        return queryURL
+        this.setState({
+            queryURL: queryURL
+        })
+    }
+
+    handleSubmit = event => {
+        //:? do we need the event.preventDefault part
+        console.log("The handle submit function ran");
+        axios.get(this.state.queryURL)
+            .then(res => {
+                console.log("Our response was", res);
+                this.setState({
+                    results: res.data, 
+                    displayResults: true
+                })
+                console.log("The current recipes are " + this.state.results);
+            })
+            .catch(err => {
+                throw err
+            })
     }
 
     render() {
@@ -70,6 +96,12 @@ class Recipes extends Component {
                     })
                     }
                 </FormGroup>
+                <button onClick={this.handleSubmit}>Submit</button>
+                {this.state.displayResults ? <div>{this.state.results.map(result => {
+                    return (
+                        <p>{result.title}</p>
+                    )
+                })}</div> : <div>Nothing to display yet</div>}
             </div>
         )
     }
