@@ -12,10 +12,34 @@ import axios from "axios";
 
 const ingredientsStyle = {
     width: '80vw',
-    height: '40vh',
-    color: '#CCCCCC',
-    margin: '0 auto'
+    height: '65vh',
+    margin: '0 auto',
+    marginTop: "40px",
+    marginBottom: "40px",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    overflow: "scroll",
+    color: "black",
+    padding: "20px"
 
+}
+
+const titleStyle = {
+    fontSize: "50px",
+    color: "black",
+    margin: "0auto",
+    textAlign: "center",
+    marginBottom: "40px",
+    marginTop: "40px"
+}
+
+const buttonHolder = {
+    textAlign: "center",
+    margin: "0auto",
+}
+
+const buttonStyle = {
+    margin: "20px"
 }
 
 
@@ -78,6 +102,8 @@ class Recipes extends Component {
 
     render() {
         return (
+            <div>
+            <h1 className="title" style={titleStyle}>Recipes for You</h1>
             <div className='ingredients-container' style={ingredientsStyle}>
                 <FormGroup row>
                     {ingredients.map(ingredient => {
@@ -97,12 +123,15 @@ class Recipes extends Component {
                     })
                     }
                 </FormGroup>
-                <button onClick={this.handleSubmit}>Submit</button>
+            </div>
+            <div className="button-holder" style={buttonHolder}>
+            <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
                 {this.state.displayResults ? <div>{this.state.results.map(result => {
                     return (
                         <p>{result.title}</p>
                     )
                 })}</div> : <div>Nothing to display yet</div>}
+            </div>
             </div>
         )
     }
