@@ -14,7 +14,8 @@ const ingredientsStyle = {
     width: '80vw',
     height: '40vh',
     color: '#CCCCCC',
-    overflow: 'auto'
+    margin: '0 auto'
+
 }
 
 
