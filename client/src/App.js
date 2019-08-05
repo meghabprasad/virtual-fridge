@@ -16,6 +16,11 @@ const config = {
   client_id: '0oa11poaf4Foygnfy357'
 }
 
+const tabStyle = {
+  margin: "0auto",
+  textAlign: "center"
+}
+
 class App extends Component {
   render() {
     return (
@@ -30,7 +35,7 @@ class App extends Component {
                 path = "/"
                 render={({ location }) => (
                   <Fragment>
-                    <Tabs value={location.pathname}>
+                    <Tabs value={location.pathname} style={tabStyle}>
                       <Tab label="Login" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
                       <Tab value="/recipes" label="Recipes" component={Link} to="/recipes"/>
