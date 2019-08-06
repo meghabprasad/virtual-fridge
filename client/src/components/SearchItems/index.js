@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
     borderStyle: "solid",
     borderWidth: "1px",
     height: 75,
-    width: "500px",
+    minWidth: "200px",
     paddingTop: 10,
     paddingBottom: 30,
     paddingLeft: 20,

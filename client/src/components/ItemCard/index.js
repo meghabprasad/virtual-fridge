@@ -16,8 +16,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxHeight: "5%",
-    maxWidth: "15%",
+    minHeight: "5%",
+    minWidth: "15%",
     float: "left",
     margin: "10px"
 

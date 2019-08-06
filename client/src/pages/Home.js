@@ -4,11 +4,33 @@ import SearchItems from "../components/SearchItems";
 import Container from '@material-ui/core/Container';
 import API from '../utils/api'
 
+
+const homeStyle = {
+    
+    width: '80vw',
+    height: '100%',
+    margin: '0 auto',
+    marginTop: "20px",
+    marginBottom: "20px",
+    // borderStyle: "solid",
+    // borderWidth: "1px",
+    overflow: "scroll",
+    color: "black",
+    padding: "20px",
+    fontSize: "15px",
+    textAlign: "center"
+
+}
+
+
 class Home extends Component{
     state = {
         items: [],
         user: '6834'
     }
+
+
+
 
     componentDidMount() {
         API.getFridge(this.state.user)
@@ -52,8 +74,8 @@ class Home extends Component{
     render() {
         
         return (
-            <Container maxWidth='lg'>
-                {/* TODO: Create a header/jumbotron */}
+            // <Container maxWidth='lg'>
+                <div className="home-container" style={homeStyle}>
                 <h1>Welcome to My Fridge.</h1>
                 <br />
                 <SearchItems />
@@ -69,8 +91,10 @@ class Home extends Component{
                             />
                         )
                     })}
+
                 </div>
-            </Container>
+
+                </div>
         )
     }
 }
