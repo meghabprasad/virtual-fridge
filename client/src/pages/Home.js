@@ -22,6 +22,15 @@ const homeStyle = {
 
 }
 
+const titleStyle = {
+    fontSize: "40px",
+    color: "black",
+    margin: "0auto",
+    textAlign: "center",
+    marginBottom: "20px",
+    marginTop: "10px"
+}
+
 
 class Home extends Component{
     state = {
@@ -76,7 +85,7 @@ class Home extends Component{
         return (
             // <Container maxWidth='lg'>
                 <div className="home-container" style={homeStyle}>
-                <h1>Welcome to My Fridge.</h1>
+                <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
                 <br />
                 <SearchItems />
                 <div id="fridge-container">
