@@ -6,7 +6,7 @@ export default {
     },
 
     createFridge: function(user) {
-        return axios.post('localhost:3001/api/fridge/' + user)
+        return axios.post('/api/fridge/' + user)
     },
 
     getFridge: function(user) {

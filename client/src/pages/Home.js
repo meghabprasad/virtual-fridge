@@ -14,7 +14,7 @@ class Home extends Component{
     componentDidMount() {
         API.getFridge(this.state.user)
             .then(res => {
-                console.log('Succesfully accessed fridge data.', res)
+                console.log('Succesfully accessed fridge data.\n', res.data)
                 this.setState({ items: res.data.items }) // Double-check resulting data
             })
             .catch(err => {
