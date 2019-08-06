@@ -54,7 +54,7 @@ class Home extends Component{
         return (
             <Container maxWidth='lg'>
                 {/* TODO: Create a header/jumbotron */}
-                <h1>My Fridge</h1>
+                <h1>Welcome to My Fridge.</h1>
                 <br />
                 <SearchItems />
                 <div id="fridge-container">
