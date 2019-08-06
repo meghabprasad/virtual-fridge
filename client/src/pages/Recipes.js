@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import axios from "axios";
+import { withAuth } from '@okta/okta-react';
 
 //something about how the children don't all have a unique key
 
@@ -46,16 +47,42 @@ const buttonStyle = {
     color: "primary"
 }
 
-
-
-class Recipes extends Component {
-    state = {
-        ingredients: [],
-        displayResults: false,
-        results: [], 
-        queryURL: ""
+export default withAuth(class Recipes extends Component {
+    constructor(props) {
+      super(props);
+      this.state = { 
+          authenticated: null,
+          ingredients: [],
+          displayResults: false,
+          results: [], 
+          queryURL: ""
+        };
+      this.checkAuthentication = this.checkAuthentication.bind(this);
+      this.checkAuthentication();
+      this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
     }
-
+  
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        this.setState({ authenticated });
+      }
+    }
+  
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+  
+    async login() {
+      // Redirect to '/' after login
+      this.props.auth.login('/');
+    }
+  
+    async logout() {
+      // Redirect to '/' after logout
+      this.props.auth.logout('/');
+    }
 
     handleCheckBox = event => {
         const newState = { ...this.state } // Instantiates a holding area for state mutations.
@@ -104,8 +131,14 @@ class Recipes extends Component {
             })
     }
 
+
+
+
+    
     render() {
-        return (
+        if (this.state.authenticated){
+            return (
+                // <Container maxWidth='lg'>
             <div>
             <h1 className="title" style={titleStyle}>Recipes for You</h1>
             <div className='ingredients-container' style={ingredientsStyle}>
@@ -137,8 +170,15 @@ class Recipes extends Component {
                 })}</div> : <div>Nothing to display yet</div>}
             </div>
             </div>
-        )
-    }
-}
+            )
+        }
+        else {
+            return(
+                <h1>Please login to access your fridge</h1>
+            )
+        }
+        
 
-export default Recipes;
+    }
+
+  });

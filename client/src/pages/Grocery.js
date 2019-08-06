@@ -1,12 +1,58 @@
 import React, { Component } from "react";
+import { withAuth } from '@okta/okta-react';
 
-function Grocery (){
-    return (
+export default withAuth(class Grocery extends Component {
+    constructor(props) {
+      super(props);
+      this.state = { 
+          authenticated: null,
+        };
+      this.checkAuthentication = this.checkAuthentication.bind(this);
+      this.checkAuthentication();
+      this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
+    }
+  
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        this.setState({ authenticated });
+      }
+    }
+  
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+  
+    async login() {
+      // Redirect to '/' after login
+      this.props.auth.login('/');
+    }
+  
+    async logout() {
+      // Redirect to '/' after logout
+      this.props.auth.logout('/');
+    }
 
-        <div>
-            <h1>This is the grocery page!</h1>
-        </div>
-    )
-}
 
-export default Grocery;
+    
+    render() {
+        if (this.state.authenticated){
+            return (
+                // <Container maxWidth='lg'>
+            <div>
+                <h1>This is the grocery page!</h1>
+            </div>
+            )
+        }
+        else {
+            return(
+                <h1>Please login to access your fridge</h1>
+            )
+        }
+        
+
+    }
+
+  });
+

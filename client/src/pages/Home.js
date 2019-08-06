@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
 import Container from '@material-ui/core/Container';
-import API from '../utils/api'
+import API from '../utils/api';
+import { withAuth } from '@okta/okta-react';
 
 
 const homeStyle = {
@@ -30,13 +31,43 @@ const titleStyle = {
     marginBottom: "20px",
     marginTop: "10px"
 }
-
-
-class Home extends Component{
-    state = {
-        items: [],
-        user: '6834' //TODO: Will need to dynamically generate the user according to the okta login/auth
+export default withAuth(class Home extends Component {
+    
+    constructor(props) {
+      super(props);
+      this.state = { 
+          authenticated: null,
+          items: [],
+          user: '6834'
+        };
+      this.checkAuthentication = this.checkAuthentication.bind(this);
+      this.checkAuthentication();
+      this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
     }
+  
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        this.setState({ authenticated });
+      }
+    }
+  
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+  
+    async login() {
+      // Redirect to '/' after login
+      this.props.auth.login('/');
+    }
+  
+    async logout() {
+      // Redirect to '/' after logout
+      this.props.auth.logout('/');
+    }
+
+
 
 
 
@@ -85,31 +116,40 @@ class Home extends Component{
     }
     
     render() {
+        if (this.state.authenticated){
+            return (
+                // <Container maxWidth='lg'>
+                    <div className="home-container" style={homeStyle}>
+                    <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
+                    <br />
+                    <SearchItems />
+                    <div id="fridge-container">
+                        {this.state.items.map(item => {
+                            return (
+                                <ItemCard 
+                                id={item.name} 
+                                key={item.name} 
+                                name={item.name.charAt(0).toUpperCase() + item.name.slice(1)} 
+                                quantity={item.quantity} expiration="1"
+                                handleRemove={this.handleRemoveItem}
+                                />
+                            )
+                        })}
+    
+                    </div>
+    
+                    </div>
+            )
+        }
+        else {
+            return(
+                <h1>Please login to access your fridge</h1>
+            )
+        }
         
-        return (
-            // <Container maxWidth='lg'>
-                <div className="home-container" style={homeStyle}>
-                <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
-                <br />
-                <SearchItems />
-                <div id="fridge-container">
-                    {this.state.items.map(item => {
-                        return (
-                            <ItemCard 
-                            id={item.name} 
-                            key={item.name} 
-                            name={item.name.charAt(0).toUpperCase() + item.name.slice(1)} 
-                            quantity={item.quantity} expiration="1"
-                            handleRemove={this.handleRemoveItem}
-                            />
-                        )
-                    })}
 
-                </div>
-
-                </div>
-        )
     }
-}
 
-export default Home;
+  });
+
+
