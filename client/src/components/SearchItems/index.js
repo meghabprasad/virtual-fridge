@@ -90,7 +90,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: "center",
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 30,
     margin: "0 auto"
   },
   container: {
