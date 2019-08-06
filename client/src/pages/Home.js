@@ -7,12 +7,14 @@ import API from '../utils/api'
 
 class Home extends Component{
     state = {
-        items: []
+        items: [],
+        user: '6834'
     }
 
     componentDidMount() {
-        API.getFridge(user)
+        API.getFridge(this.state.user)
             .then(res => {
+                console.log('Succesfully accessed fridge data.', res)
                 this.setState({ items: res.data.items }) // Double-check resulting data
             })
             .catch(err => {
