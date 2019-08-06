@@ -55,6 +55,32 @@ class Home extends Component{
             })
     }
 
+    handleAddItem = event => {
+        const itemID = event.target.getAttribute('data-id')
+        const newState = {...this.state}
+        const temp = [];
+
+        newState.items.map(item => {
+            if (item.name == itemID) {
+                item.quantity++;
+                temp.push(item)
+                console.log(`Add 1 to quantity of ${item.name}`)
+            } else {
+                temp.push(item)
+            }
+        })
+        newState.items = temp
+        this.setState(newState)
+
+        API.updateFridge(this.state.user, this.state.items)
+            .then(res => {
+                console.log(res.status)
+            })
+            .catch(err => {
+                throw err
+            })
+    }
+
     handleRemoveItem = event => {
         console.log(this.state.items)
         const itemID = event.target.getAttribute('data-id')
@@ -101,6 +127,7 @@ class Home extends Component{
                             name={item.name.charAt(0).toUpperCase() + item.name.slice(1)} 
                             quantity={item.quantity} expiration="1"
                             handleRemove={this.handleRemoveItem}
+                            handleAdd={this.handleAddItem}
                             />
                         )
                     })}
