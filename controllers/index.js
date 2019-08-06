@@ -4,9 +4,17 @@ const db = require('../models');
 
 module.exports = {
     // Fridge Routes
-    getFridge: function (req, res) {
+    allFridges: function (req, res) {
         db.Fridge
-            .find({user_id: req.params.id})
+            .find({})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+
+    getFridge: function (req, res) {
+        
+        db.Fridge
+            .find({'user_id': req.params.id})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
