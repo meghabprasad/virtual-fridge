@@ -4,7 +4,6 @@ import SearchItems from "../components/SearchItems";
 import Container from '@material-ui/core/Container';
 import API from '../utils/api'
 
-
 class Home extends Component{
     state = {
         items: [],

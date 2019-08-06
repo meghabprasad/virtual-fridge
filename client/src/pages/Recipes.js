@@ -12,20 +12,21 @@ import axios from "axios";
 
 const ingredientsStyle = {
     width: '80vw',
-    height: '65vh',
+    height: '50vh',
     margin: '0 auto',
-    marginTop: "40px",
-    marginBottom: "40px",
+    marginTop: "20px",
+    marginBottom: "20px",
     borderStyle: "solid",
     borderWidth: "1px",
     overflow: "scroll",
     color: "black",
-    padding: "20px"
+    padding: "20px",
+    fontSize: "15px"
 
 }
 
 const titleStyle = {
-    fontSize: "50px",
+    fontSize: "40px",
     color: "black",
     margin: "0auto",
     textAlign: "center",
@@ -36,10 +37,13 @@ const titleStyle = {
 const buttonHolder = {
     textAlign: "center",
     margin: "0auto",
+    marginBottom: "20px"
 }
 
 const buttonStyle = {
-    margin: "20px"
+    margin: "20px",
+    variant: "contained",
+    color: "primary"
 }
 
 
