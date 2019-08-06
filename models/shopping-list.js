@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ShoppingList = new Schema({
-    ref: "Family",
+const shoppingListSchema = new Schema({
+    family_id: {
+        type: String
+    },
+    user_id: {
+        type: String
+    },
     items: {
         type: String
     },
@@ -12,5 +17,5 @@ const ShoppingList = new Schema({
     }
 })
 
-const ShoppingList = mongoose.model("ShoppingList", ShoppingList)
+const ShoppingList = mongoose.model("ShoppingList", shoppingListSchema)
 module.exports = ShoppingList;

@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Family = new Schema({
-    ref: "User",
-    ref: "Fridge"
-        // user_id: { type: String },
-        // family_name: { type: String }
+const familySchema = new Schema({
+        user_id: { type: String, default: 'debug' },
+        family_id: { type: String, default: 'debug' }
 })
-const Family = mongoose.model("Family", Family);
+const Family = mongoose.model("Family", familySchema);
 module.exports = Family;

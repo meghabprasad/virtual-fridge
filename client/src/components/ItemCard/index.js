@@ -12,11 +12,15 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-      maxHeight: "5%",
-    maxWidth: "10%"
+    minHeight: "5%",
+    minWidth: "15%",
+    float: "left",
+    margin: "10px"
+
   },
   media: {
     height: 0,
@@ -37,8 +41,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: red[500]
   },
   image: {
-      width: "100px",
-      height: "100px"
+    width: "100px",
+    height: "100px"
   }
 }));
 
@@ -56,11 +60,15 @@ export default function ItemCard(props) {
         action={<IconButton aria-label="settings" />}
         title={props.name}
       />
-      <CardMedia className={classes.image}
+      <CardContent>
+        <Typography paragraph>Quantity: {props.quantity}</Typography>
+        <Typography paragraph>Expires in {props.expiration} days!</Typography>
+      </CardContent>
+      {/* <CardMedia className={classes.image}
         className={classes.media}
         image={props.imageLink}
         title={props.name}
-      />
+      /> */}
 
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" />
@@ -77,10 +85,16 @@ export default function ItemCard(props) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Quantity: {props.quantity}</Typography>
-          <Typography paragraph>Expires in {props.expiration} days!</Typography>
-        </CardContent>
+        <Button 
+        data-id={props.id} 
+        color='secondary' 
+        className='remove-btn'
+        onClick={props.handleRemove}>
+        <i className="material-icons">
+          remove_circle_outline
+        </i>
+        Remove from Fridge
+        </Button>  
       </Collapse>
     </Card>
   );
