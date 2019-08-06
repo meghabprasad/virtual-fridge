@@ -109,9 +109,24 @@ class Home extends Component{
                 throw err
             })
     }
+
+    handleDeleteCard = event => {
+        // Remove item from this.state.items similar to above methods, and update the items column in db with removed key:value
+    }
+
+    handleAddToFridge = event => {
+        // Same as above methods, but adding a key with quantity value of 1
+    }
+
+    handleInputChange = event => {
+
+    }
+
+    handleFormSubmit = evenet => {
+
+    }
     
     render() {
-        
         return (
             // <Container maxWidth='lg'>
                 <div className="home-container" style={homeStyle}>
