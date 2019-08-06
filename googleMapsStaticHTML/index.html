@@ -182,6 +182,7 @@
 
 <body>
   <div id="map"></div>
+  <img id="testImage">
   <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
@@ -191,7 +192,7 @@
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
-        zoom: 6
+        zoom: 15
       });
       infoWindow = new google.maps.InfoWindow;
 
@@ -224,6 +225,9 @@
       infoWindow.open(map);
     }
 
+    var placeURL = "";
+    var placeURLboolean = true;
+
     $.ajax({
       url: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.735260,-122.420350&rankby=distance&keyword=grocery&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs',
       method: 'GET'
@@ -237,14 +241,43 @@
           //var placeId = 'ChIJuaCrn1h-j4ARYXTPLCYpnc8';
 
           $.ajax({
-            url: `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,formatted_phone_number,formatted_address,opening_hours,website&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs`,
+            url: `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=name,formatted_phone_number,formatted_address,opening_hours,website,photo&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs`,
             method: 'GET'
           })
             .then(function (placeResponse) {
               console.log("Place Response", placeResponse);
+              //$("#testImage").attr("src", placeResponse.photos[0].photo_reference);
+              // if(placeURLboolean) {
+              //   console.log("The Jquery should be executed here");
+              //   console.log("PlaceURL booolean", placeURLboolean);
+              //   placeURL = placeResponse.photos[0].photo_reference;
+              //   placeURLboolean = false;
+              //   $("#testImage").attr("src", placeURL);
+              // }
+              if (placeResponse.result.photos) {
+                for (var i = 0; i < placeResponse.result.photos.length; i++) {
+                  console.log("We'd insert a photo here");
+                  console.log("Our current element", placeResponse.result.photos[i]);
+                  //$("body").append(`<img src ='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeResponse.result.photos[i].photo_referencekey}AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs'>`);
+                  $("body").append(`<img src = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeResponse.result.photos[i].photo_reference}&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs'>`)
+                }
+              }
             })
         }
       })
+
+      // console.log("Place URL", placeURL);
+      // $("#testImage").attr("src", placeURL);
+
+      // $.ajax({
+      //   url: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs', 
+      //   method: 'GET'
+      // })
+      //   .then(function(imageResponse) {
+      //     $("#testImage").attr("src", imageResponse);
+      //   })
+
+      // $("#testImage").attr("src", 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs')
 
       // $.ajax({
       //   url: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJuaCrn1h-j4ARYXTPLCYpnc8&fields=name,rating,formatted_phone_number&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs', 
@@ -261,3 +294,10 @@
 </body>
 
 </html>
+
+<!-- photo_reference: "CmRaAAAA-UmHuTm1auOvOFNo-iVqMyIf55AINvM8j0OcFJgoVs…rMebOYm8ih0YAHmXzzEGhR4SZe8fhqKcyhVhrLTTeIZV1xTMg", width: 3024}
+1: {height: 1200, html_attributions: Array(1), photo_reference: "CmRaAAAAy02h4PBImMrKoekWYZS5LJ6_nUVMfbdjXkRTija696…BE0ycEvTmmvgc865E_PGhTdOF8eiZvMekRo19CPmWdt55D5Vg", width: 1600}
+2: {height: 1836, html_attributions: Array(1), photo_reference: "CmRaAAAA1NEAfwlvWGKNhp8JFQtrtCSXfCkXD3xpRXCFt8NPNS…JrUDxWAt71ow44QlDIAGhSLJG7GocBSUGwZNbsAq2AE1qW4mw", width: 3264}
+3: {height: 1200, html_attributions: Array(1), photo_reference: "CmRaAAAAA9LXkX9iCc-DCFDo8sjeki4t7T6U9WrvU_bOmGmv7H…iL9PD965huOxYfXAwlUGhTGcjFQw5HI5BnIePPNS1SbUmFD6Q", width: 1600}
+4: {height: 4032, html_attributions: Array(1), photo_reference: "CmRaAAAAAPBBss58XO4KaOTMTLgBgKb-Coj7M_mhdIBmbnr6OU…FWct0tIGD2pZLuvTIluGhRY-yl_cAzS_TnDfMuy8OOsFAwRCg", width: 3024}
+5: {height: 1536, html_attributions: Array(1), photo_reference: "CmRaAAAAV6nKUATOdPRgO0xf07Hq0BARBXzQLh67zqAASLaIGG…OKnV9PH4AEazAtwHWyoGhRimJWCF8SuMsoCi02CKZhazElatQ", width: 2048} -->
