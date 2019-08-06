@@ -81,7 +81,8 @@ const useStyles = makeStyles(theme => ({
     borderStyle: "solid",
     borderWidth: "1px",
     height: 75,
-    width: "500px",
+    minWidth: "200px",
+    maxWidth: "400px",
     paddingTop: 10,
     paddingBottom: 30,
     paddingLeft: 20,
@@ -89,7 +90,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: "center",
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 30,
+    margin: "0 auto"
   },
   container: {
     position: 'relative',

@@ -21,7 +21,7 @@ const ingredientsStyle = {
     overflow: "scroll",
     color: "black",
     padding: "20px",
-    fontSize: "15px"
+    fontSize: "10px"
 
 }
 
