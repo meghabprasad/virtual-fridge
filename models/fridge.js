@@ -4,7 +4,7 @@ const fridgeSchema = new Schema({
     family_id: { type: String },
     user_id: { type: String, required: true },
     items: {
-        type: String, 
+        type: Array, 
         required: false
     },
     date: {

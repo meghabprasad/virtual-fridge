@@ -1,6 +1,32 @@
-const router = require("express").Router();
-const controllers = require("../../controllers/");
+import axios from "axios"
 
+export default {
+    createUser: function(name) {
+        return axios.post('/api/newuser', name)
+    },
 
+    createFridge: function(user) {
+        return axios.post('/api/fridge/' + user)
+    },
 
-module.exports = router;
+    getFridge: function(user) {
+        return axios.get('/api/fridge/' + user)
+    },
+    
+    updateFridge: function(user, body) {
+        return axios.get('/api/fridge/' + user, body)
+    },
+
+    createList: function(user) {
+        return axios.post('/api/shoppinglist/' + user)
+    },
+
+    getList: function(user) {
+        return axios.get('/api/shoppinglist/' + user)
+    },
+
+    updateList: function(user, body) {
+        return axios.put('/api/shoppinglist/' + user, body)
+    }
+
+}

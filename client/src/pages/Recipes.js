@@ -113,9 +113,9 @@ class Recipes extends Component {
                     {ingredients.map(ingredient => {
                         return (
                             <FormControlLabel
+                                key={ingredient.n}
                                 control={
                                     <Checkbox
-                                        key={ingredient.n}
                                         onClick={(event) => this.handleCheckBox(event)}
                                         value={ingredient}
                                         color="primary"
