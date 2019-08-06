@@ -82,7 +82,11 @@ export default function ItemCard(props) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Button color='secondary' className='remove-btn'>
+        <Button 
+        data-id={props.id} 
+        color='secondary' 
+        className='remove-btn'
+        onClick={props.handleRemove}>
         <i className="material-icons">
           remove_circle_outline
         </i>
