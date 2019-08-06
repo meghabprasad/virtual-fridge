@@ -7,13 +7,13 @@ import API from '../utils/api'
 class Home extends Component{
     state = {
         items: [],
-        user: '6834'
+        user: '6834' //TODO: Will need to dynamically generate the user according to the okta login/auth
     }
 
     componentDidMount() {
         API.getFridge(this.state.user)
             .then(res => {
-                const newState = {...this.state}
+                // const newState = {...this.state}
                 console.log('Succesfully accessed fridge data.\n', res.data)
                 this.setState({ items: res.data[0].items }, () => console.log('This is the updated fridge', this.state.items))
                 //TODO: Find out why 
@@ -42,11 +42,15 @@ class Home extends Component{
         })
         newState.items = temp
         this.setState(newState)
+        console.log(this.state, 'This is the state after updating and setting state.')
         
-        // API.updateFridge(this.state.items)
-        //     .then(res => {
-        //         this.setState(newState)
-        //     })
+        API.updateFridge(this.state.user, this.state.items)
+            .then(res => {
+                console.log(res.status)
+            })
+            .catch(err => {
+                throw err
+            })
     }
     
     render() {
