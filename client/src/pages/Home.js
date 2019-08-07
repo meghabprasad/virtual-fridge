@@ -131,13 +131,14 @@ class Home extends Component {
             })
     }
 
-    handleAddToFridge = event => { //Similar to handleFromSubmit in gbooks.
+    handleAddToFridge = event => {
         const itemID = this.state.search
         const newState = { ...this.state }
         newState.items.push({
             name: itemID,
             quantity: 1
         })
+        
         this.setState(newState)
         console.log(this.state, 'This is the state after updating and setting state.')
 
