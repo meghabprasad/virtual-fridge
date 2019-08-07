@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
@@ -11,7 +10,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
@@ -94,7 +92,7 @@ export default function ItemCard(props) {
               <i className="material-icons">
                 add_circle_outline
         </i>
-              {/* Add 1 */}
+              Add
             </span>
           </Button>
         {/* </div>
@@ -108,7 +106,7 @@ export default function ItemCard(props) {
               <i className="material-icons">
                 remove_circle_outline
         </i>
-              {/* Remove 1 */}
+              Remove
            </span>
           </Button>
           <br />

@@ -12,7 +12,6 @@ module.exports = {
     },
 
     getFridge: function (req, res) {
-        
         db.Fridge
             .find({'user_id': req.params.id})
             .then(dbModel => res.json(dbModel))
@@ -20,11 +19,7 @@ module.exports = {
     },
     addFridge: function (req, res) {
         db.Fridge
-            .insert({
-                family_id: req.body.family_id,
-                user_id: req.params.id,
-                items: []
-            })
+            .updateOne({ user_id: req.params.id }, { user_id: req.params.id }, { upsert: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
@@ -39,10 +34,11 @@ module.exports = {
         // Update may provide better functionality when updating the list of ingredients contained within fridges. ie Load the array into this.state to render onto page => update this.state after adding or removing an item => push the new updated this.state into the database, updating the key of ingredients/products with the new one with the updated item array.
         const filter = { 'user_id': req.params.id}
         const update = { 'items': req.body }
+        const options = { upsert: true}
         console.log('Update fridge req.params:', req.params,
         '\nreq.body:', req.body)
         db.Fridge
-            .findOneAndUpdate(filter, update)
+            .findOneAndUpdate(filter, update, options)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
