@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import axios from "axios";
 import { withAuth } from '@okta/okta-react';
-
+import NotSignedIn from "../components/NotSignedIn";
 //something about how the children don't all have a unique key
 
 
@@ -174,7 +174,7 @@ export default withAuth(class Recipes extends Component {
         }
         else {
             return(
-                <h1>Please login to access your fridge</h1>
+                <NotSignedIn item="recipes" img="https://media.istockphoto.com/vectors/strawberry-half-cut-in-splash-on-pink-background-vector-illustration-vector-id860392710?k=6&m=860392710&s=612x612&w=0&h=kSDFPCPFIqRD7vVGK3snIWZWC-z5p_ZhPnpbmjzFYb0=" />
             )
         }
         

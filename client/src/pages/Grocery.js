@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from '@okta/okta-react';
+import NotSignedIn from "../components/NotSignedIn";
 
 export default withAuth(class Grocery extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ export default withAuth(class Grocery extends Component {
         }
         else {
             return(
-                <h1>Please login to access your fridge</h1>
+                <NotSignedIn item="groceries" img="http://www.locker14.com/wp-content/uploads/2014/11/Apple.LF_.2.jpg" />
             )
         }
         

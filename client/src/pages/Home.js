@@ -4,6 +4,7 @@ import SearchItems from "../components/SearchItems";
 import Container from '@material-ui/core/Container';
 import API from '../utils/api';
 import { withAuth } from '@okta/okta-react';
+import NotSignedIn from "../components/NotSignedIn";
 
 
 const homeStyle = {
@@ -143,7 +144,7 @@ export default withAuth(class Home extends Component {
         }
         else {
             return(
-                <h1>Please login to access your fridge</h1>
+                <NotSignedIn item="fridge" img="http://www.locker14.com/wp-content/uploads/2014/11/Orange.LF_.2-.jpg"/>
             )
         }
         
