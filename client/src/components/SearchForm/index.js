@@ -21,19 +21,6 @@ function SearchForm(props) {
                 />
                 <FormHelperText id='my-helper-text'>e.g. kaswal nuts</FormHelperText>
                 {props.children}
-                {/* <div id='search-form' className='text-center'>
-            <input className='form-control' name='search'
-                placeholder='Search for an ingredient...'
-                type='text'
-                onChange={props.handleInputChange}></input>
-                <br />
-                <button
-                className='btn btn-block btn-primary'
-                onClick={props.handleFormSubmit}
-                type='submit'
-                >   Search
-            </button>
-        </div> */}
             </FormControl>
         </Container>
     )

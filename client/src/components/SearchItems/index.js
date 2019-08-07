@@ -10,6 +10,8 @@ import Popper from '@material-ui/core/Popper';
 import { makeStyles } from '@material-ui/core/styles';
 import RawIngredientsList from "../../utils/json/rawingredientslist"
 import Typography from '@material-ui/core/Typography';
+import Home from "../../pages/Home"
+
 
 
 const suggestions = RawIngredientsList;
@@ -157,6 +159,7 @@ export default function IntegrationAutosuggest() {
       <Autosuggest
         {...autosuggestProps}
         inputProps={{
+          name: 'search',
           classes,
           id: 'react-autosuggest-popper',
           label: 'Ingredient',

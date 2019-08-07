@@ -1,10 +1,36 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
-// import SearchItems from "../components/SearchItems";
+import SearchItems from "../components/SearchItems";
 import Button from '@material-ui/core/Button';
 import API from '../utils/api'
 import SearchForm from '../components/SearchForm'
+import Autocomplete from "../components/Autocomplete";
+import Autosuggest from 'react-autosuggest';
+import RawIngredientsList from "../utils/json/rawingredientslist.json"
 
+const dictionary = RawIngredientsList;
+
+// Teach Autosuggest how to calculate suggestions for any given input value.
+const getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0 ? [] : dictionary.filter(item =>
+        item.toLowerCase().slice(0, inputLength) === inputValue
+    );
+};
+
+// When suggestion is clicked, Autosuggest needs to populate the input
+// based on the clicked suggestion. Teach Autosuggest how to calculate the
+// input value for every given suggestion.
+const getSuggestionValue = dictionary;
+
+// Use your imagination to render suggestions.
+const renderSuggestion = suggestion => (
+    <div>
+        {suggestion}
+    </div>
+);
 
 const homeStyle = {
 
@@ -35,12 +61,33 @@ const titleStyle = {
 
 class Home extends Component {
     state = {
+        value: '',
+        suggestions: [],
         items: [],
         user: '6834', //TODO: Will need to dynamically generate the user according to the okta login/auth
         search: ""
     }
 
+    onChange = (event, { newValue }) => {
+        this.setState({
+            value: newValue
+        });
+    };
 
+    // Autosuggest will call this function every time you need to update suggestions.
+    // You already implemented this logic above, so just use it.
+    onSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+            suggestions: getSuggestions(value)
+        });
+    };
+
+    // Autosuggest will call this function every time you need to clear suggestions.
+    onSuggestionsClearRequested = () => {
+        this.setState({
+            suggestions: []
+        });
+    };
 
 
     componentDidMount() {
@@ -49,7 +96,6 @@ class Home extends Component {
                 // const newState = {...this.state}
                 console.log('Succesfully accessed fridge data.\n', res.data)
                 this.setState({ items: res.data[0].items }, () => console.log('This is the updated fridge', this.state.items))
-                //TODO: Find out why 
 
             })
             .catch(err => {
@@ -138,7 +184,7 @@ class Home extends Component {
             name: itemID,
             quantity: 1
         })
-        
+
         this.setState(newState)
         console.log(this.state, 'This is the state after updating and setting state.')
 
@@ -159,22 +205,41 @@ class Home extends Component {
     }
 
     render() {
+        const { value, suggestions } = this.state;
+
+        // Autosuggest will pass through all these props to the input.
+        const inputProps = {
+            name: 'search',
+            placeholder: 'Search for an ingredient',
+            value: this.state.search,
+            onChange: this.handleInputChange
+        };
+
         return (
             // <Container maxWidth='lg'>
             <div className="home-container" style={homeStyle}>
                 <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
                 <br />
                 <span>
-                    <SearchForm
+                    {/* <SearchForm
                         fullWidth={true}
                         handleInputChange={this.handleInputChange}
-                    >
-                        <Button
-                            type='submit'
-                            onClick={this.handleAddToFridge}>
-                            + Add to Fridge
+                    /> */}
+                    {/* <SearchItems onChange={this.handleInputChange} /> */}
+                    <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
+                        alwaysRenderSuggestions={true}
+                    />
+                    <Button
+                        type='submit'
+                        onClick={this.handleAddToFridge}>
+                        + Add to Fridge
                     </Button>
-                    </SearchForm>
                 </span>
                 <div id="fridge-container">
                     {this.state.items.map(item => {
