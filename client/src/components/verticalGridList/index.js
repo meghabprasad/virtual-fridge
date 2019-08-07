@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 import axios from "axios";
+import Thumbnail from '../thumbnail';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,7 +49,7 @@ function convertIngredientToImage(str) {
     axios.get('https://pixabay.com/api/?key=13232685-3497331870f507199a8b8b2b7&q=' + str + '&image_type=photo')
         .then(res => {
             console.log("Response", res);
-            console.log("Our url", res.data.hits[0].largeImageURL);
+            // console.log("Our url", res.data.hits[0].largeImageURL);
             if (res.data.hits) {
                 if (res.data.hits[0]) {
                     console.log("Our url", res.data.hits[0].largeImageURL);
@@ -72,7 +73,7 @@ export default function TitlebarGridList(props) {
 
     const converter = convertIngredientToImage;
 
-    var newIngredients = props.ingredients.slice(0, 10);
+    var newIngredients = props.ingredients.slice(0, 100);
 
     return (
         <div className={classes.root}>
@@ -82,8 +83,9 @@ export default function TitlebarGridList(props) {
                 </GridListTile>
                 {newIngredients.map((ingredient, i) => (
                     <GridListTile key={ingredient + i}>
-
-                        <img src={converter(ingredient)} alt={ingredient} />
+                        <Thumbnail name = {ingredient}></Thumbnail>
+                        {/* <img src={converter(ingredient)} alt={ingredient} /> */}
+                        {/* <img src = "https://pixabay.com/get/54e5d3414c53b108f5d084609629347c163dd8ed564c704c732a79d4924dc25a_1280.jpg"></img> */}
                         <GridListTileBar
                             title={ingredient}
                             subtitle={<span>by: {ingredient}</span>}
