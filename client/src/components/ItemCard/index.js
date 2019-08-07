@@ -94,11 +94,11 @@ export default function ItemCard(props) {
               <i className="material-icons">
                 add_circle_outline
         </i>
-              Add 1
+              {/* Add 1 */}
             </span>
           </Button>
-        </div>
-        <div data-id={props.id}>
+        {/* </div>
+        <div data-id={props.id}> */}
           <Button
             data-id={props.id}
             color='secondary'
@@ -108,7 +108,7 @@ export default function ItemCard(props) {
               <i className="material-icons">
                 remove_circle_outline
         </i>
-              Remove 1
+              {/* Remove 1 */}
            </span>
           </Button>
           <br />

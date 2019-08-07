@@ -219,9 +219,8 @@ export default withAuth(class Home extends Component {
     }
 
     handleSuggestionSelect = (event) => {
-        console.log(event.target, 'this is the event target')
+        // console.log(event.target, 'this is the event target')
         if (event.target) {
-            // const part1 = event.target.getElementsByTagName('span')[0].innerHTML
             const wholeWord = event.target.innerText
             console.log(wholeWord)
         
