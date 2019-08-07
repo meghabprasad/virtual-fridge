@@ -16,8 +16,11 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxHeight: "5%",
-    maxWidth: "15%"
+    minHeight: "5%",
+    minWidth: "15%",
+    float: "left",
+    margin: "10px"
+
   },
   media: {
     height: 0,
@@ -82,12 +85,34 @@ export default function ItemCard(props) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Button color='secondary' className='remove-btn'>
-        <i className="material-icons">
-          remove_circle_outline
+        <div data-id={props.id}>
+          <Button
+            data-id={props.id}
+            color='primary'
+            className='add-btn'>
+            <span data-id={props.id} onClick={props.handleAdd}>
+            <i className="material-icons">
+              add_circle_outline
         </i>
-        Remove from Fridge
-        </Button>  
+            Add to Fridge
+            </span>
+        </Button>
+        </div>
+        <br />
+        <div data-id={props.id}>
+        <Button
+          data-id={props.id}
+          color='secondary'
+          className='remove-btn'
+         >
+           <span data-id={props.id}  onClick={props.handleRemove}>
+          <i className="material-icons">
+            remove_circle_outline
+        </i>
+          Remove from Fridge
+           </span>
+        </Button>
+        </div>
       </Collapse>
     </Card>
   );

@@ -9,6 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
 import { makeStyles } from '@material-ui/core/styles';
 import RawIngredientsList from "../../utils/json/rawingredientslist"
+import Typography from '@material-ui/core/Typography';
+
 
 const suggestions = RawIngredientsList;
 
@@ -76,8 +78,20 @@ function getSuggestionValue(suggestion) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 250,
+    borderStyle: "solid",
+    borderWidth: "1px",
+    height: 75,
+    minWidth: "200px",
+    maxWidth: "400px",
+    paddingTop: 10,
+    paddingBottom: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
     flexGrow: 1,
+    textAlign: "center",
+    marginTop: 10,
+    marginBottom: 30,
+    margin: "0 auto"
   },
   container: {
     position: 'relative',
@@ -138,6 +152,7 @@ export default function IntegrationAutosuggest() {
 
   return (
     <div className={classes.root}>
+            <Typography>Search for an Ingredient</Typography>
       <div className={classes.divider} />
       <Autosuggest
         {...autosuggestProps}

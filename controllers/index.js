@@ -4,9 +4,17 @@ const db = require('../models');
 
 module.exports = {
     // Fridge Routes
-    getFridge: function (req, res) {
+    allFridges: function (req, res) {
         db.Fridge
-            .find({user_id: req.params.id})
+            .find({})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+
+    getFridge: function (req, res) {
+        
+        db.Fridge
+            .find({'user_id': req.params.id})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -29,10 +37,12 @@ module.exports = {
     },
     updateFridge: function (req, res) { 
         // Update may provide better functionality when updating the list of ingredients contained within fridges. ie Load the array into this.state to render onto page => update this.state after adding or removing an item => push the new updated this.state into the database, updating the key of ingredients/products with the new one with the updated item array.
-        const filter = { user_id: req.params.id}
-        const update = { items: req.body }
+        const filter = { 'user_id': req.params.id}
+        const update = { 'items': req.body }
+        console.log('Update fridge req.params:', req.params,
+        '\nreq.body:', req.body)
         db.Fridge
-            .findOneAndUpdate({ filter, update }) // Maybe change key to ingredients in order to update the ingredients array.
+            .findOneAndUpdate(filter, update)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },

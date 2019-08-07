@@ -3,12 +3,25 @@ const db = require("../models");
 
 // This file empties the collection and inserts the data below
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualFridge", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualFridge", { useNewUrlParser: true });
 
 const fridgeSeed = {
     family_id: '8675309',
     user_id: '6834',
-    items: ['banana', 'peanuts', 'dog food'],
+    items: [
+        {
+            name: 'banana',
+            quantity: 10
+        },
+        {
+            name: 'peanuts',
+            quantity: 6,
+        },
+        {
+            name: 'dog food',
+            quantity: 1
+        }     
+    ],
     date: Date.now
 }
 

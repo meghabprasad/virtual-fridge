@@ -4,13 +4,12 @@ const dbControllers = require("../../controllers");
 // Fridge routes
 ////////////////
 
-// /api/fridge/update
-router.route("/fridge/update/")
-
+router.route('/fridges/')
+    .get(dbControllers.allFridges)
 
 // /api/fridge/:id
 router.route("/fridge/:id")
-    .put(dbController.updateFridge)
+    .put(dbControllers.updateFridge)
     .post(dbControllers.addFridge)
     .get(dbControllers.getFridge)
     .delete(dbControllers.removeFridge);
@@ -24,7 +23,7 @@ router.route("/user")
     .post(dbControllers.createUser)
     .put(dbControllers.updateUserFamily)
 
-router.route("/user/:id")
+// router.route("/user/:id")
 
 
 
