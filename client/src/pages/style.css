@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Beth+Ellen|Domine|Libre+Caslon+Text|Old+Standard+TT|Playfair+Display|Source+Serif+Pro&display=swap");
+
+#fridge-container {
+    background-image: url(../pages/fridge-background.png);
+    position: static;
+    background-size: 100% 310px;
+    height: 500px;
+    /* background-size: cover; */
+    background-repeat: repeat-y;
+    
+}
+

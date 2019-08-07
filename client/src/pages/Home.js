@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
+import "./style.css";
+import { fontFamily } from "@material-ui/system";
 import Button from '@material-ui/core/Button';
 import API from '../utils/api'
 import SearchForm from '../components/SearchForm'
 import Autocomplete from "../components/Autocomplete";
 import Autosuggest from 'react-autosuggest';
 import RawIngredientsList from "../utils/json/rawingredientslist.json"
+
 
 const dictionary = RawIngredientsList;
 
@@ -32,6 +35,8 @@ const renderSuggestion = suggestion => (
     </div>
 );
 
+// const background = "fridge-background.png"
+
 const homeStyle = {
 
     width: '80vw',
@@ -39,13 +44,37 @@ const homeStyle = {
     margin: '0 auto',
     marginTop: "20px",
     marginBottom: "20px",
-    // borderStyle: "solid",
-    // borderWidth: "1px",
+    borderStyle: "solid",
+    borderWidth: "1px",
     overflow: "scroll",
     color: "black",
     padding: "20px",
     fontSize: "15px",
-    textAlign: "center"
+    textAlign: "center",
+    backgroundColor: "white",
+    // boxShadow: '0px 0px 1px 1px gray',
+    // border: '10px',
+
+}
+
+const homeStyle2 = {
+    
+    width: '80vw',
+    height: '100%',
+    margin: '0 auto',
+    marginTop: "10px",
+    marginBottom: "20px",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    overflow: "scroll",
+    color: "black",
+    paddingTop: "15px",
+    paddingBottom: "20px",
+    fontSize: "15px",
+    textAlign: "center",
+    // backgroundColor: "white",
+    // boxShadow: '0px 0px 1px 1px gray',
+    // border: '10px',
 
 }
 
@@ -55,7 +84,13 @@ const titleStyle = {
     margin: "0auto",
     textAlign: "center",
     marginBottom: "20px",
-    marginTop: "10px"
+    marginTop: "10px",
+    fontFamily: 'Beth Ellen',
+    // fontFamily: 'Libre Caslon Text',
+    // fontFamily: 'Playfair Display',
+    // fontFamily: 'Source Serif Pro',
+    // fontFamily: 'Domine',
+    // fontFamily: 'Old Standard TT',
 }
 
 
@@ -229,6 +264,7 @@ class Home extends Component {
 
         return (
             // <Container maxWidth='lg'>
+
             <div className="home-container" style={homeStyle}>
                 <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
                 <br />
@@ -253,7 +289,8 @@ class Home extends Component {
                         + Add to Fridge
                     </Button>
                 </span>
-                <div id="fridge-container">
+                <div id="fridge-container" className="home-container" style={homeStyle2}>
+          
                     {this.state.items.map(item => {
                         return (
                             <ItemCard
@@ -270,7 +307,6 @@ class Home extends Component {
 
                 </div>
 
-            </div>
         )
     }
 }
