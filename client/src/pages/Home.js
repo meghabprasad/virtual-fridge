@@ -29,7 +29,7 @@ const homeStyle = {
 }
 
 const homeStyle2 = {
-    
+
     width: '80vw',
     height: '100%',
     margin: '0 auto',
@@ -64,60 +64,68 @@ const titleStyle = {
     // fontFamily: 'Old Standard TT',
 }
 export default withAuth(class Home extends Component {
-    
+
     constructor(props) {
-      super(props);
-      this.state = { 
-          authenticated: null,
-          items: [],
-          user: '6834',
-          userinfo: {},
-          search: ""
-      };
-      this.checkAuthentication = this.checkAuthentication.bind(this);
-      this.checkAuthentication();
-      this.login = this.login.bind(this);
-      this.logout = this.logout.bind(this);
+        super(props);
+        this.state = {
+            authenticated: null,
+            items: [],
+            user: null,
+            userinfo: {},
+            search: ""
+        };
+        this.checkAuthentication = this.checkAuthentication.bind(this);
+        this.checkAuthentication();
+        this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
     }
-  
+
     async checkAuthentication() {
-      const authenticated = await this.props.auth.isAuthenticated();
-      if (authenticated !== this.state.authenticated) {
-        const userinfo = await this.props.auth.getUser();
-        this.setState({ userinfo }); 
-        console.log(this.state.userinfo);
-        this.setState({ authenticated });
-      }
+        const authenticated = await this.props.auth.isAuthenticated();
+        if (authenticated !== this.state.authenticated) {
+            const userinfo = await this.props.auth.getUser();
+            this.setState({ userinfo });
+            console.log(this.state.userinfo);
+            this.setState({ authenticated });
+            if (this.state.authenticated) {
+                this.setState({ user: userinfo.email })
+            }
+            console.log(this.state)
+
+            console.log('This is the state.user', this.state.user)
+            API.createFridge(this.state.user)
+                .then(res => {
+                    console.log(res, 'create fridge')
+                })
+            API.getFridge(this.state.user)
+                .then(res => {
+                    console.log(res, 'res')
+                    console.log('Succesfully accessed fridge data.\n', res.data)
+                    this.setState({ items: res.data[0].items }, () => console.log('This is the updated fridge', this.state.items))
+                })
+                .catch(err => {
+                    throw err
+                })
+        }
     }
-  
+
     componentDidUpdate() {
-      this.checkAuthentication();
+        this.checkAuthentication();
     }
-  
+
     async login() {
-      // Redirect to '/' after login
-      this.props.auth.login('/');
+        // Redirect to '/' after login
+        this.props.auth.login('/');
     }
-  
+
     async logout() {
-      // Redirect to '/' after logout
-      this.props.auth.logout('/');
+        // Redirect to '/' after logout
+        this.props.auth.logout('/');
     }
 
-    componentDidMount() {
-        API.getFridge(this.state.user)
-            .then(res => {
-                // const newState = {...this.state}
-                console.log('Succesfully accessed fridge data.\n', res.data)
-                this.setState({ items: res.data[0].items }, () => console.log('This is the updated fridge', this.state.items))
-
-            })
-            .catch(err => {
-                throw err
-            })
-    }
 
     handleAddItem = event => {
+        console.log(event.target.getAttribute('data-id'), 'is the event target')
         const itemID = event.target.getAttribute('data-id')
         const newState = { ...this.state }
         const temp = [];
@@ -134,7 +142,7 @@ export default withAuth(class Home extends Component {
         newState.items = temp
         this.setState(newState)
 
-        API.updateFridge(this.state.user, this.state.items)
+        API.updateFridge(this.state.user, temp)
             .then(res => {
                 console.log(res.status)
             })
@@ -163,7 +171,7 @@ export default withAuth(class Home extends Component {
         this.setState(newState)
         console.log(this.state, 'This is the state after updating and setting state.')
 
-        API.updateFridge(this.state.user, this.state.items)
+        API.updateFridge(this.state.user, temp)
             .then(res => {
                 console.log(res.status)
             })
@@ -223,58 +231,58 @@ export default withAuth(class Home extends Component {
         if (event.target) {
             const wholeWord = event.target.innerText
             console.log(wholeWord)
-        
+
             this.setState({
                 search: wholeWord
             })
         } else {
             console.log(event)
         }
-      }
+    }
 
     render() {
-        if (this.state.authenticated){
+        if (this.state.authenticated) {
             return (
-           <div className="home-container" style={homeStyle}>
+                <div className="home-container" style={homeStyle}>
                     <h1 className="title" style={titleStyle}>Welcome to Your Fridge, {this.state.userinfo.given_name}</h1>
                     <h2>Signed in as: {this.state.userinfo.email}</h2>
                     <br />
-                <span>
-                    <SearchItems grabWord={this.handleSuggestionSelect} />
-                    <Button
-                        type='submit'
-                        onClick={this.handleAddToFridge}>
-                        + Add to Fridge
+                    <span>
+                        <SearchItems grabWord={this.handleSuggestionSelect} />
+                        <Button
+                            type='submit'
+                            onClick={this.handleAddToFridge}>
+                            + Add to Fridge
                     </Button>
-                </span>
-                <div id="fridge-container" className="home-container" style={homeStyle2}>
-          
-                    {this.state.items.map(item => {
-                        return (
-                            <ItemCard
-                                id={item.name}
-                                key={item.name}
-                                name={item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                                quantity={item.quantity} expiration="1"
-                                handleRemove={this.handleRemoveItem}
-                                handleAdd={this.handleAddItem}
-                                handleDelete={this.handleDeleteCard}
-                            />
-                        )
-                    })}
+                    </span>
+                    <div id="fridge-container" className="home-container" style={homeStyle2}>
 
-                </div>
+                        {this.state.items.map(item => {
+                            return (
+                                <ItemCard
+                                    id={item.name}
+                                    key={item.name}
+                                    name={item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                                    quantity={item.quantity} expiration="1"
+                                    handleRemove={this.handleRemoveItem}
+                                    handleAdd={this.handleAddItem}
+                                    handleDelete={this.handleDeleteCard}
+                                />
+                            )
+                        })}
+
+                    </div>
                 </div>
 
             )
         }
         else {
-            return(
-                <NotSignedIn item="fridge" img="http://www.locker14.com/wp-content/uploads/2014/11/Orange.LF_.2-.jpg"/>
+            return (
+                <NotSignedIn item="fridge" img="http://www.locker14.com/wp-content/uploads/2014/11/Orange.LF_.2-.jpg" />
             )
         }
     }
 
-  });
+});
 
 
