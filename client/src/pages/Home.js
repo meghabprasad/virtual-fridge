@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
+import Container from '@material-ui/core/Container';
+import API from '../utils/api';
+import { withAuth } from '@okta/okta-react';
+import NotSignedIn from "../components/NotSignedIn";
 import "./style.css";
 import { fontFamily } from "@material-ui/system";
 import Button from '@material-ui/core/Button';
-import API from '../utils/api'
 import SearchForm from '../components/SearchForm'
 import Autocomplete from "../components/Autocomplete";
 import Autosuggest from 'react-autosuggest';
@@ -92,16 +95,48 @@ const titleStyle = {
     // fontFamily: 'Domine',
     // fontFamily: 'Old Standard TT',
 }
-
-
-class Home extends Component {
-    state = {
-        value: '',
-        suggestions: [],
-        items: [],
-        user: '6834', //TODO: Will need to dynamically generate the user according to the okta login/auth
-        search: ""
+export default withAuth(class Home extends Component {
+    
+    constructor(props) {
+      super(props);
+      this.state = { 
+          authenticated: null,
+          items: [],
+          user: '6834',
+          userinfo: {},
+          search: ""
+      };
+      this.checkAuthentication = this.checkAuthentication.bind(this);
+      this.checkAuthentication();
+      this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
     }
+  
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        const userinfo = await this.props.auth.getUser();
+        this.setState({ userinfo }); 
+        console.log(this.state.userinfo);
+        this.setState({ authenticated });
+      }
+    }
+  
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+  
+    async login() {
+      // Redirect to '/' after login
+      this.props.auth.login('/');
+    }
+  
+    async logout() {
+      // Redirect to '/' after logout
+      this.props.auth.logout('/');
+    }
+
+
 
     // onChange = (event, { newValue }) => {
     //     this.setState({
@@ -252,22 +287,14 @@ class Home extends Component {
       }
 
     render() {
-        const { value, suggestions } = this.state;
+        if (this.state.authenticated){
+            return (
+              // <Container maxWidth='lg'>
 
-        // Autosuggest will pass through all these props to the input.
-        // const inputProps = {
-        //     name: 'search',
-        //     placeholder: 'Search for an ingredient',
-        //     value: this.state.search,
-        //     onChange: this.handleInputChange
-        // };
-
-        return (
-            // <Container maxWidth='lg'>
-
-            <div className="home-container" style={homeStyle}>
-                <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
-                <br />
+           <div className="home-container" style={homeStyle}>
+                    <h1 className="title" style={titleStyle}>Welcome to Your Fridge, {this.state.userinfo.given_name}</h1>
+                    <h2>Signed in as: {this.state.userinfo.email}</h2>
+                    <br />
                 <span>
                     {/* <SearchForm
                         fullWidth={true}
@@ -308,8 +335,15 @@ class Home extends Component {
                 </div>
                 </div>
 
-        )
+            )
+        }
+        else {
+            return(
+                <NotSignedIn item="fridge" img="http://www.locker14.com/wp-content/uploads/2014/11/Orange.LF_.2-.jpg"/>
+            )
+        }
     }
-}
 
-export default Home;
+  });
+
+
