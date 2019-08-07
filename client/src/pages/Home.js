@@ -111,29 +111,58 @@ class Home extends Component{
             })
     }
 
-    handleDeleteCard = event => {
-        // Remove item from this.state.items similar to above methods, and update the items column in db with removed key:value
+    handleDeleteCard = event => { //TODO: Create delete card button
+        const itemID = event.target.getAttribute('data-id')
+        console.log(itemID)
+        const newState = {...this.state}
+        const temp = newState.items.filter(item => item.name !== itemID)
+        console.log('This is the filtered list\n', temp)
+        newState.items = temp
+        this.setState(newState)
+        console.log('Updated State\n', this.state.items)
+
+        API.updateFridge(this.state.user, this.state.items)
+            .then(res => {
+                console.log(res.status)
+            })
+            .catch(err => {
+                throw err
+            })
     }
 
-    handleAddToFridge = event => {
-        // Same as above methods, but adding a key with quantity value of 1
+    handleAddToFridge = event => { //Similar to handleFromSubmit in gbooks.
+        const itemID = event.target.getAttribute('data-id') // TODO: Grab itemID from form input/autocomplete bar.
+        const newState = {...this.state}
+        newState.items.push({
+            name: itemID,
+            quantity: 1
+        })
+        this.setState(newState)
+        console.log(this.state, 'This is the state after updating and setting state.')
+        
+        API.updateFridge(this.state.user, this.state.items)
+            .then(res => {
+                console.log(res.status)
+            })
+            .catch(err => {
+                throw err
+            })
     }
 
-    handleInputChange = event => {
-
+    handleInputChange = event => { //TODO: Go to SearchItems and adjust to grab form input values.
+        const { name, value } = event.target 
+        this.setState({
+            [name]: value
+        })
     }
 
-    handleFormSubmit = evenet => {
-
-    }
-    
     render() {
         return (
             // <Container maxWidth='lg'>
                 <div className="home-container" style={homeStyle}>
                 <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
                 <br />
-                <SearchItems />
+                <SearchItems onChange={this.handleInputChange}/>
                 <div id="fridge-container">
                     {this.state.items.map(item => {
                         return (
@@ -144,6 +173,7 @@ class Home extends Component{
                             quantity={item.quantity} expiration="1"
                             handleRemove={this.handleRemoveItem}
                             handleAdd={this.handleAddItem}
+                            handleDelete={this.handleDeleteCard}
                             />
                         )
                     })}
