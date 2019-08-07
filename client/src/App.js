@@ -9,6 +9,9 @@ import NoMatch from "./pages/NoMatch";
 import ReactDOM from "react-dom";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Container from '@material-ui/core/Container';
+// import "./app.css";
+
 
 const config = {
   issuer: 'https://dev-622585.okta.com/oauth2/default',
@@ -25,6 +28,7 @@ const tabStyle = {
 class App extends Component {
   render() {
     return (
+      <div>
       <BrowserRouter>
         <div className="App">
 
@@ -36,12 +40,14 @@ class App extends Component {
                 path = "/"
                 render={({ location }) => (
                   <Fragment>
+                    
                     <Tabs value={location.pathname} style={tabStyle}>
                       <Tab label="Login" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
                       <Tab value="/recipes" label="Recipes" component={Link} to="/recipes"/>
                       <Tab label="Groceries" value="/grocery" component={Link} to="/grocery" />
                     </Tabs>
+                    
                     <Switch>
                       <Route exact path="/" component = {Login} />
                       <Route exact path="/home" component = {Home} />
@@ -57,6 +63,7 @@ class App extends Component {
 
         </div>
       </BrowserRouter>
+      </div>
     )
   }
 }

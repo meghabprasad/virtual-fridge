@@ -11,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import RecipeCard from "../components/RecipeCard";
 import Container from '@material-ui/core/Container';
 
+import { withAuth } from '@okta/okta-react';
+import NotSignedIn from "../components/NotSignedIn";
 //something about how the children don't all have a unique key
 
 
@@ -50,16 +52,46 @@ const buttonStyle = {
     color: "primary"
 }
 
-
-
-class Recipes extends Component {
-    state = {
-        ingredients: [],
-        displayResults: false,
-        results: [],
-        queryURL: ""
+export default withAuth(class Recipes extends Component {
+    constructor(props) {
+      super(props);
+      this.state = { 
+          authenticated: null,
+          ingredients: [],
+          displayResults: false,
+          results: [], 
+          queryURL: ""
+        };
+      this.checkAuthentication = this.checkAuthentication.bind(this);
+      this.checkAuthentication();
+      this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
     }
+  
+    async checkAuthentication() {
+      const authenticated = await this.props.auth.isAuthenticated();
+      if (authenticated !== this.state.authenticated) {
+        const userinfo = await this.props.auth.getUser();
+        this.setState({ userinfo }); 
+        console.log(this.state.userinfo);
+        this.setState({ authenticated });
+      }
+    }
+  
+    componentDidUpdate() {
+      this.checkAuthentication();
+    }
+  
+    async login() {
+      // Redirect to '/' after login
+      this.props.auth.login('/');
+    }
+  
+    async logout() {
+      // Redirect to '/' after logout
+      this.props.auth.logout('/');
 
+    }
 
     handleCheckBox = event => {
         console.log("The handle checkbox function ran");
@@ -110,7 +142,13 @@ class Recipes extends Component {
             })
     }
 
+
+
+
+    
     render() {
+
+      if (this.state.authenticated){
         return (
             // <div>
             // <h1 className="title" style={titleStyle}>Recipes for You</h1>
@@ -171,8 +209,15 @@ class Recipes extends Component {
                 </Grid>
                 {/* </Container> */}
             </div>
-        )
-    }
-}
+            )
+        }
+        else {
+            return(
+                <NotSignedIn item="recipes" img="https://media.istockphoto.com/vectors/strawberry-half-cut-in-splash-on-pink-background-vector-illustration-vector-id860392710?k=6&m=860392710&s=612x612&w=0&h=kSDFPCPFIqRD7vVGK3snIWZWC-z5p_ZhPnpbmjzFYb0=" />
+            )
+        }
+        
 
-export default Recipes;
+    }
+
+  });
