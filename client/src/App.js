@@ -16,7 +16,8 @@ import "./app.css";
 const config = {
   issuer: 'https://dev-622585.okta.com/oauth2/default',
   redirect_uri: window.location.origin + '/implicit/callback',
-  client_id: '0oa11poaf4Foygnfy357'
+  client_id: '0oa11poaf4Foygnfy357',
+  responseType: ['token', 'id_token']
 }
 
 const tabStyle = {

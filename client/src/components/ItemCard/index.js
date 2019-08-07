@@ -16,15 +16,15 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minHeight: "5%",
-    minWidth: "15%",
+    maxHeight: "350px",
+    maxWidth: "150px",
     float: "left",
     margin: "10px"
 
   },
   media: {
     height: 0,
-    paddingTop: "100%" // 16:9
+    paddingTop: "20px" // 16:9
 
   },
   expand: {
@@ -40,10 +40,10 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
-  image: {
-    width: "100px",
-    height: "100px"
-  }
+  // image: {
+  //   width: "100px",
+  //   height: "100px"
+  // }
 }));
 
 export default function ItemCard(props) {
@@ -85,16 +85,47 @@ export default function ItemCard(props) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Button 
-        data-id={props.id} 
-        color='secondary' 
-        className='remove-btn'
-        onClick={props.handleRemove}>
-        <i className="material-icons">
-          remove_circle_outline
+        <div data-id={props.id}>
+          <Button
+            data-id={props.id}
+            color='primary'
+            className='add-btn'>
+            <span data-id={props.id} onClick={props.handleAdd}>
+              <i className="material-icons">
+                add_circle_outline
         </i>
-        Remove from Fridge
-        </Button>  
+              Add 1
+            </span>
+          </Button>
+        </div>
+        <br />
+        <div data-id={props.id}>
+          <Button
+            data-id={props.id}
+            color='secondary'
+            className='remove-btn'
+          >
+            <span data-id={props.id} onClick={props.handleRemove}>
+              <i className="material-icons">
+                remove_circle_outline
+        </i>
+              Remove 1
+           </span>
+          </Button>
+          <br />
+          <Button
+            data-id={props.id}
+            color='secondary'
+            className='delete-btn'
+          >
+            <span data-id={props.id} onClick={props.handleDelete}>
+              <i class="material-icons">
+                delete
+              </i>
+              Delete from Fridge
+           </span>
+          </Button>
+        </div>
       </Collapse>
     </Card>
   );

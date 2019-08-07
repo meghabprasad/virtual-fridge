@@ -10,6 +10,8 @@ import Popper from '@material-ui/core/Popper';
 import { makeStyles } from '@material-ui/core/styles';
 import RawIngredientsList from "../../utils/json/rawingredientslist"
 import Typography from '@material-ui/core/Typography';
+import Home from "../../pages/Home"
+
 
 
 const suggestions = RawIngredientsList;
@@ -116,12 +118,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IntegrationAutosuggest() {
+export default function IntegrationAutosuggest(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [state, setState] = React.useState({
     single: '',
     popper: '',
+    search: '',
   });
 
   const [stateSuggestions, setSuggestions] = React.useState([]);
@@ -148,6 +151,7 @@ export default function IntegrationAutosuggest() {
     onSuggestionsClearRequested: handleSuggestionsClearRequested,
     getSuggestionValue,
     renderSuggestion,
+    // onSuggestionSelected: props.grabWord
   };
 
   return (
@@ -157,6 +161,7 @@ export default function IntegrationAutosuggest() {
       <Autosuggest
         {...autosuggestProps}
         inputProps={{
+          name: 'search',
           classes,
           id: 'react-autosuggest-popper',
           label: 'Ingredient',
@@ -175,7 +180,7 @@ export default function IntegrationAutosuggest() {
           suggestion: classes.suggestion,
         }}
         renderSuggestionsContainer={options => (
-          <Popper anchorEl={anchorEl} open={Boolean(options.children)}>
+          <Popper onClick={props.grabWord} anchorEl={anchorEl} open={Boolean(options.children)}>
             <Paper
               square
               {...options.containerProps}
