@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import axios from "axios";
+import VerticalGridList from "../components/verticalGridList";
 
 //something about how the children don't all have a unique key
 
@@ -106,36 +107,39 @@ class Recipes extends Component {
 
     render() {
         return (
+            // <div>
+            // <h1 className="title" style={titleStyle}>Recipes for You</h1>
+            // <div className='ingredients-container' style={ingredientsStyle}>
+            //     <FormGroup row>
+            //         {ingredients.map(ingredient => {
+            //             return (
+            //                 <FormControlLabel
+            //                     key={ingredient.n}
+            //                     control={
+            //                         <Checkbox
+            //                             onClick={(event) => this.handleCheckBox(event)}
+            //                             value={ingredient}
+            //                             color="primary"
+            //                         />
+            //                     }
+            //                     label={ingredient}
+            //                 />
+            //             );
+            //         })
+            //         }
+            //     </FormGroup>
+            // </div>
+            // <div className="button-holder" style={buttonHolder}>
+            // <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
+            //     {this.state.displayResults ? <div>{this.state.results.map(result => {
+            //         return (
+            //             <p>{result.title}</p>
+            //         )
+            //     })}</div> : <div>Nothing to display yet</div>}
+            // </div>
+            // </div>
             <div>
-            <h1 className="title" style={titleStyle}>Recipes for You</h1>
-            <div className='ingredients-container' style={ingredientsStyle}>
-                <FormGroup row>
-                    {ingredients.map(ingredient => {
-                        return (
-                            <FormControlLabel
-                                key={ingredient.n}
-                                control={
-                                    <Checkbox
-                                        onClick={(event) => this.handleCheckBox(event)}
-                                        value={ingredient}
-                                        color="primary"
-                                    />
-                                }
-                                label={ingredient}
-                            />
-                        );
-                    })
-                    }
-                </FormGroup>
-            </div>
-            <div className="button-holder" style={buttonHolder}>
-            <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
-                {this.state.displayResults ? <div>{this.state.results.map(result => {
-                    return (
-                        <p>{result.title}</p>
-                    )
-                })}</div> : <div>Nothing to display yet</div>}
-            </div>
+                <VerticalGridList ingredients = {ingredients}></VerticalGridList>
             </div>
         )
     }
