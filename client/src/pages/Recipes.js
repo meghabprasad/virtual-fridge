@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import axios from "axios";
 import VerticalGridList from "../components/verticalGridList";
+import Grid from '@material-ui/core/Grid'
 
 //something about how the children don't all have a unique key
 
@@ -53,14 +54,16 @@ class Recipes extends Component {
     state = {
         ingredients: [],
         displayResults: false,
-        results: [], 
+        results: [],
         queryURL: ""
     }
 
 
     handleCheckBox = event => {
+        console.log("The handle checkbox function ran");
         const newState = { ...this.state } // Instantiates a holding area for state mutations.
         const newItem = event.target.value // Grabs value of checkbox item
+        console.log("Event target value", newItem);
         if (this.state.ingredients.includes(newItem)) {
             // console.log(newState.ingredients.indexOf(newItem))
             const itemIndex = newState.ingredients.indexOf(newItem)
@@ -95,10 +98,10 @@ class Recipes extends Component {
             .then(res => {
                 console.log("Our response was", res);
                 this.setState({
-                    results: res.data, 
+                    results: res.data,
                     displayResults: true
                 })
-                console.log("The current recipes are " + this.state.results);
+                console.log("The first recipe is ", this.state.results[0]);
             })
             .catch(err => {
                 throw err
@@ -138,8 +141,24 @@ class Recipes extends Component {
             //     })}</div> : <div>Nothing to display yet</div>}
             // </div>
             // </div>
+
             <div>
-                <VerticalGridList ingredients = {ingredients}></VerticalGridList>
+                <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <VerticalGridList ingredients={ingredients} handleCheckBox={this.handleCheckBox}></VerticalGridList>
+                </Grid>
+                <br></br>
+                <Grid item xs={6}>
+                    <div className="button-holder" style={buttonHolder}>
+                        <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
+                        {this.state.displayResults ? <div>{this.state.results.map(result => {
+                            return (
+                                <p>{result.title}</p>
+                            )
+                        })}</div> : <div>Nothing to display yet</div>}
+                    </div>
+                    </Grid>
+                </Grid>
             </div>
         )
     }

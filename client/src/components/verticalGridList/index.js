@@ -9,6 +9,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 import axios from "axios";
 import Thumbnail from '../thumbnail';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -73,13 +74,13 @@ export default function TitlebarGridList(props) {
 
     const converter = convertIngredientToImage;
 
-    var newIngredients = props.ingredients.slice(0, 100);
+    var newIngredients = props.ingredients.slice(100, 200);
 
     return (
         <div className={classes.root}>
             <GridList cellHeight={180} cols = {3} className={classes.gridList}>
                 <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
-                    <ListSubheader component="div">December</ListSubheader>
+                    <ListSubheader component="div">Choose your Ingredients</ListSubheader>
                 </GridListTile>
                 {newIngredients.map((ingredient, i) => (
                     <GridListTile key={ingredient + i}>
@@ -89,11 +90,16 @@ export default function TitlebarGridList(props) {
                         <GridListTileBar
                             title={ingredient}
                             subtitle={<span>by: {ingredient}</span>}
-                            actionIcon={
-                                <IconButton aria-label={`info about ${ingredient}`} className={classes.icon}>
-                                    <InfoIcon />
-                                </IconButton>
-                            }
+                            // actionIcon={
+                            //     <IconButton aria-label={`info about ${ingredient}`} className={classes.icon}>
+                            //         <InfoIcon />
+                            //     </IconButton>
+                            // }
+                            actionIcon = {<Checkbox 
+                                onClick={(event) => props.handleCheckBox(event)}
+                                value = {ingredient}
+                                // try to make the checkboxes red
+                                ></Checkbox>}
                         />
                     </GridListTile>
                 ))}
