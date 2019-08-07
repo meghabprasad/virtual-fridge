@@ -84,11 +84,11 @@ class Home extends Component{
     handleRemoveItem = event => {
         console.log(this.state.items)
         const itemID = event.target.getAttribute('data-id')
-        console.log('this is the itemid', itemID)
+        // console.log('this is the itemid', itemID)
         const newState = {...this.state}
         const temp = [];
         newState.items.map(item => {
-            if (item.name == itemID) {
+            if (item.name === itemID) {
                 console.log(item, 'this is the item')
                 item.quantity--;
                 temp.push(item)
@@ -96,6 +96,7 @@ class Home extends Component{
             } else {
                 temp.push(item)
             }
+            return console.log('Completed remove function.')
         })
         newState.items = temp
         this.setState(newState)
