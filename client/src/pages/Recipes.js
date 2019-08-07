@@ -66,6 +66,9 @@ export default withAuth(class Recipes extends Component {
     async checkAuthentication() {
       const authenticated = await this.props.auth.isAuthenticated();
       if (authenticated !== this.state.authenticated) {
+        const userinfo = await this.props.auth.getUser();
+        this.setState({ userinfo }); 
+        console.log(this.state.userinfo);
         this.setState({ authenticated });
       }
     }
@@ -141,6 +144,7 @@ export default withAuth(class Recipes extends Component {
                 // <Container maxWidth='lg'>
             <div>
             <h1 className="title" style={titleStyle}>Recipes for You</h1>
+            <h2>Signed in as: {this.state.userinfo.email}</h2>
             <div className='ingredients-container' style={ingredientsStyle}>
                 <FormGroup row>
                     {ingredients.map(ingredient => {
