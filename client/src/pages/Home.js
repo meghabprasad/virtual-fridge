@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
-import Container from '@material-ui/core/Container';
-import API from '../utils/api'
+// import Container from '@material-ui/core/Container';
+import API from '../utils/api';
+import "./style.css";
+import { fontFamily } from "@material-ui/system";
 
+
+// const background = "fridge-background.png"
 
 const homeStyle = {
     
@@ -12,13 +16,37 @@ const homeStyle = {
     margin: '0 auto',
     marginTop: "20px",
     marginBottom: "20px",
-    // borderStyle: "solid",
-    // borderWidth: "1px",
+    borderStyle: "solid",
+    borderWidth: "1px",
     overflow: "scroll",
     color: "black",
     padding: "20px",
     fontSize: "15px",
-    textAlign: "center"
+    textAlign: "center",
+    backgroundColor: "white",
+    // boxShadow: '0px 0px 1px 1px gray',
+    // border: '10px',
+
+}
+
+const homeStyle2 = {
+    
+    width: '80vw',
+    height: '100%',
+    margin: '0 auto',
+    marginTop: "10px",
+    marginBottom: "20px",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    overflow: "scroll",
+    color: "black",
+    paddingTop: "15px",
+    paddingBottom: "20px",
+    fontSize: "15px",
+    textAlign: "center",
+    // backgroundColor: "white",
+    // boxShadow: '0px 0px 1px 1px gray',
+    // border: '10px',
 
 }
 
@@ -28,7 +56,13 @@ const titleStyle = {
     margin: "0auto",
     textAlign: "center",
     marginBottom: "20px",
-    marginTop: "10px"
+    marginTop: "10px",
+    fontFamily: 'Beth Ellen',
+    // fontFamily: 'Libre Caslon Text',
+    // fontFamily: 'Playfair Display',
+    // fontFamily: 'Source Serif Pro',
+    // fontFamily: 'Domine',
+    // fontFamily: 'Old Standard TT',
 }
 
 
@@ -88,11 +122,15 @@ class Home extends Component{
         
         return (
             // <Container maxWidth='lg'>
-                <div className="home-container" style={homeStyle}>
+                <div>
+
+<               div className="home-container" style={homeStyle}>
                 <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
                 <br />
                 <SearchItems />
-                <div id="fridge-container">
+
+                </div>
+                <div id="fridge-container" className="home-container" style={homeStyle2}>
                     {this.state.items.map(item => {
                         return (
                             <ItemCard 
@@ -108,6 +146,7 @@ class Home extends Component{
                 </div>
 
                 </div>
+
         )
     }
 }

@@ -16,15 +16,15 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minHeight: "5%",
-    minWidth: "15%",
+    maxHeight: "350px",
+    maxWidth: "150px",
     float: "left",
     margin: "10px"
 
   },
   media: {
     height: 0,
-    paddingTop: "100%" // 16:9
+    paddingTop: "20px" // 16:9
 
   },
   expand: {
@@ -40,10 +40,10 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
-  image: {
-    width: "100px",
-    height: "100px"
-  }
+  // image: {
+  //   width: "100px",
+  //   height: "100px"
+  // }
 }));
 
 export default function ItemCard(props) {
