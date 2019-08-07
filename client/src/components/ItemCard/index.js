@@ -16,8 +16,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxHeight: "350px",
-    maxWidth: "150px",
+    maxHeight: "500px",
+    maxWidth: "225px",
     float: "left",
     margin: "10px"
 
@@ -62,7 +62,7 @@ export default function ItemCard(props) {
       />
       <CardContent>
         <Typography paragraph>Quantity: {props.quantity}</Typography>
-        <Typography paragraph>Expires in {props.expiration} days!</Typography>
+        {/* <Typography paragraph>Expires in {props.expiration} days!</Typography> */}
       </CardContent>
       {/* <CardMedia className={classes.image}
         className={classes.media}
@@ -90,26 +90,25 @@ export default function ItemCard(props) {
             data-id={props.id}
             color='primary'
             className='add-btn'>
-            <span data-id={props.id} onClick={props.handleAdd}>
+            <span className='button-html' data-id={props.id} onClick={props.handleAdd}>
               <i className="material-icons">
                 add_circle_outline
         </i>
-              Add 1
+              {/* Add 1 */}
             </span>
           </Button>
-        </div>
-        <br />
-        <div data-id={props.id}>
+        {/* </div>
+        <div data-id={props.id}> */}
           <Button
             data-id={props.id}
             color='secondary'
             className='remove-btn'
           >
-            <span data-id={props.id} onClick={props.handleRemove}>
+            <span className='button-html' data-id={props.id} onClick={props.handleRemove}>
               <i className="material-icons">
                 remove_circle_outline
         </i>
-              Remove 1
+              {/* Remove 1 */}
            </span>
           </Button>
           <br />
@@ -118,11 +117,11 @@ export default function ItemCard(props) {
             color='secondary'
             className='delete-btn'
           >
-            <span data-id={props.id} onClick={props.handleDelete}>
+            <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
               <i class="material-icons">
                 delete
               </i>
-              Delete from Fridge
+              Delete Item
            </span>
           </Button>
         </div>

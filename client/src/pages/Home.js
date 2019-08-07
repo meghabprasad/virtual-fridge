@@ -1,44 +1,12 @@
 import React, { Component } from "react";
 import ItemCard from "../components/ItemCard";
 import SearchItems from "../components/SearchItems";
-import Container from '@material-ui/core/Container';
 import API from '../utils/api';
 import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
 import "./style.css";
-import { fontFamily } from "@material-ui/system";
 import Button from '@material-ui/core/Button';
-import SearchForm from '../components/SearchForm'
-import Autocomplete from "../components/Autocomplete";
-import Autosuggest from 'react-autosuggest';
-import RawIngredientsList from "../utils/json/rawingredientslist.json"
 
-
-const dictionary = RawIngredientsList;
-
-// Teach Autosuggest how to calculate suggestions for any given input value.
-const getSuggestions = value => {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-
-    return inputLength === 0 ? [] : dictionary.filter(item =>
-        item.toLowerCase().slice(0, inputLength) === inputValue
-    );
-};
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-const getSuggestionValue = dictionary;
-
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
-    <div>
-        {suggestion}
-    </div>
-);
-
-// const background = "fridge-background.png"
 
 const homeStyle = {
 
@@ -135,30 +103,6 @@ export default withAuth(class Home extends Component {
       // Redirect to '/' after logout
       this.props.auth.logout('/');
     }
-
-
-
-    // onChange = (event, { newValue }) => {
-    //     this.setState({
-    //         value: newValue
-    //     });
-    // };
-
-    // // Autosuggest will call this function every time you need to update suggestions.
-    // // You already implemented this logic above, so just use it.
-    // onSuggestionsFetchRequested = ({ value }) => {
-    //     this.setState({
-    //         suggestions: getSuggestions(value)
-    //     });
-    // };
-
-    // // Autosuggest will call this function every time you need to clear suggestions.
-    // onSuggestionsClearRequested = () => {
-    //     this.setState({
-    //         suggestions: []
-    //     });
-    // };
-
 
     componentDidMount() {
         API.getFridge(this.state.user)
@@ -275,41 +219,28 @@ export default withAuth(class Home extends Component {
     }
 
     handleSuggestionSelect = (event) => {
-        // console.log(event.target)
-        const part1 = event.target.getElementsByTagName('span')[0].innerHTML
-        const part2 = event.target.getElementsByTagName('span')[1].innerHTML
-        const wholeWord = part1 + part2
-        console.log(wholeWord)
-    
-        this.setState({
-            search: wholeWord
-        })
+        // console.log(event.target, 'this is the event target')
+        if (event.target) {
+            const wholeWord = event.target.innerText
+            console.log(wholeWord)
+        
+            this.setState({
+                search: wholeWord
+            })
+        } else {
+            console.log(event)
+        }
       }
 
     render() {
         if (this.state.authenticated){
             return (
-              // <Container maxWidth='lg'>
-
            <div className="home-container" style={homeStyle}>
                     <h1 className="title" style={titleStyle}>Welcome to Your Fridge, {this.state.userinfo.given_name}</h1>
                     <h2>Signed in as: {this.state.userinfo.email}</h2>
                     <br />
                 <span>
-                    {/* <SearchForm
-                        fullWidth={true}
-                        handleInputChange={this.handleInputChange}
-                    /> */}
                     <SearchItems grabWord={this.handleSuggestionSelect} />
-                    {/* <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                        getSuggestionValue={getSuggestionValue}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={inputProps}
-                        alwaysRenderSuggestions={true}
-                    /> */}
                     <Button
                         type='submit'
                         onClick={this.handleAddToFridge}>
