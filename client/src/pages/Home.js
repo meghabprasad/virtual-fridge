@@ -39,7 +39,9 @@ export default withAuth(class Home extends Component {
       this.state = { 
           authenticated: null,
           items: [],
-          user: '6834'
+          user: '6834',
+          userinfo: {}
+
         };
       this.checkAuthentication = this.checkAuthentication.bind(this);
       this.checkAuthentication();
@@ -50,6 +52,9 @@ export default withAuth(class Home extends Component {
     async checkAuthentication() {
       const authenticated = await this.props.auth.isAuthenticated();
       if (authenticated !== this.state.authenticated) {
+        const userinfo = await this.props.auth.getUser();
+        this.setState({ userinfo }); 
+        console.log(this.state.userinfo);
         this.setState({ authenticated });
       }
     }
@@ -121,7 +126,8 @@ export default withAuth(class Home extends Component {
             return (
                 // <Container maxWidth='lg'>
                     <div className="home-container" style={homeStyle}>
-                    <h1 className="title" style={titleStyle}>Welcome to Your Fridge</h1>
+                    <h1 className="title" style={titleStyle}>Welcome to Your Fridge, {this.state.userinfo.given_name}</h1>
+                    <h2>Signed in as: {this.state.userinfo.email}</h2>
                     <br />
                     <SearchItems />
                     <div id="fridge-container">
