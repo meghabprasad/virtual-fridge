@@ -34,6 +34,9 @@ export default withAuth(class Grocery extends Component {
     async checkAuthentication() {
       const authenticated = await this.props.auth.isAuthenticated();
       if (authenticated !== this.state.authenticated) {
+        const userinfo = await this.props.auth.getUser();
+        this.setState({ userinfo }); 
+        console.log(this.state.userinfo);
         this.setState({ authenticated });
       }
     }
@@ -56,6 +59,8 @@ export default withAuth(class Grocery extends Component {
     render() {
         if (this.state.authenticated){
             return (
+              <div>
+              <h2>Signed in as: {this.state.userinfo.email}</h2>
                  <div className={useStyles.root}>
         <Grid container spacing={3}>
         <Grid item xs={6}>
@@ -79,6 +84,7 @@ export default withAuth(class Grocery extends Component {
 
         </Grid>
         </div>
+        </div>
             )
         }
         else {
@@ -86,6 +92,7 @@ export default withAuth(class Grocery extends Component {
                 <NotSignedIn item="groceries" img="http://www.locker14.com/wp-content/uploads/2014/11/Apple.LF_.2.jpg" />
             )
         }
+        
         
 
     }
