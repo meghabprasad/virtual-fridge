@@ -7,7 +7,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import axios from "axios";
 import VerticalGridList from "../components/verticalGridList";
-import Grid from '@material-ui/core/Grid'
+import Grid from '@material-ui/core/Grid';
+import RecipeCard from "../components/RecipeCard";
+import Container from '@material-ui/core/Container';
 
 //something about how the children don't all have a unique key
 
@@ -143,22 +145,31 @@ class Recipes extends Component {
             // </div>
 
             <div>
+                {/* <Container> */}
                 <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <VerticalGridList ingredients={ingredients} handleCheckBox={this.handleCheckBox}></VerticalGridList>
-                </Grid>
-                <br></br>
-                <Grid item xs={6}>
-                    <div className="button-holder" style={buttonHolder}>
+                    <Grid item xs={6}>
+                        <VerticalGridList ingredients={ingredients} handleCheckBox={this.handleCheckBox}></VerticalGridList>
+                    </Grid>
+                    <br></br>
+                    <Grid item xs={6}>
+                        {/* <div className="button-holder" style={buttonHolder}> */}
                         <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
-                        {this.state.displayResults ? <div>{this.state.results.map(result => {
+
+                        {this.state.displayResults ? <div style={{ display: "flex", height: "1000px" }}>{this.state.results.map(result => {
                             return (
-                                <p>{result.title}</p>
+
+                                
+                                    <div style={{ width: "200px !important" }}>
+                                        <RecipeCard ></RecipeCard>
+                                    </div>
+                        
                             )
                         })}</div> : <div>Nothing to display yet</div>}
-                    </div>
+
+                        {/* </div> */}
                     </Grid>
                 </Grid>
+                {/* </Container> */}
             </div>
         )
     }
