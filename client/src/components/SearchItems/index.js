@@ -41,16 +41,16 @@ function renderInputComponent(inputProps) {
 function renderSuggestion(suggestion, { query, isHighlighted }) {
   const matches = match(suggestion, query);
   const parts = parse(suggestion, matches);
+  let wholeWord = ""
+  parts.map(part => (
+    wholeWord += part.text
+  ))
 
   return (
     <MenuItem selected={isHighlighted} component="div">
-      <div>
-        {parts.map(part => (
-          <span key={part.text} style={{ fontWeight: part.highlight ? 500 : 400 }}>
-            {part.text}
-          </span>
-        ))}
-      </div>
+        <span>
+        {wholeWord}
+        </span>
     </MenuItem>
   );
 }
