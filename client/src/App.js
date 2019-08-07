@@ -10,7 +10,7 @@ import ReactDOM from "react-dom";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Container from '@material-ui/core/Container';
-import "./app.css";
+// import "./app.css";
 
 
 const config = {

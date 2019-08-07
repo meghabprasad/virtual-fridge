@@ -17,6 +17,8 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
+  
+  
 export default withAuth(class Grocery extends Component {
     constructor(props) {
       super(props);
@@ -52,10 +54,9 @@ export default withAuth(class Grocery extends Component {
 
     
     render() {
-      const classes = useStyles();
         if (this.state.authenticated){
             return (
-                 <div className={classes.root}>
+                 <div className={useStyles.root}>
         <Grid container spacing={3}>
         <Grid item xs={6}>
         <h1>
