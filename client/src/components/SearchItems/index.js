@@ -118,12 +118,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IntegrationAutosuggest() {
+export default function IntegrationAutosuggest(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [state, setState] = React.useState({
     single: '',
     popper: '',
+    search: '',
   });
 
   const [stateSuggestions, setSuggestions] = React.useState([]);
@@ -150,6 +151,7 @@ export default function IntegrationAutosuggest() {
     onSuggestionsClearRequested: handleSuggestionsClearRequested,
     getSuggestionValue,
     renderSuggestion,
+    // onSuggestionSelected: props.grabWord
   };
 
   return (
@@ -178,7 +180,7 @@ export default function IntegrationAutosuggest() {
           suggestion: classes.suggestion,
         }}
         renderSuggestionsContainer={options => (
-          <Popper anchorEl={anchorEl} open={Boolean(options.children)}>
+          <Popper onClick={props.grabWord} anchorEl={anchorEl} open={Boolean(options.children)}>
             <Paper
               square
               {...options.containerProps}

@@ -68,26 +68,26 @@ class Home extends Component {
         search: ""
     }
 
-    onChange = (event, { newValue }) => {
-        this.setState({
-            value: newValue
-        });
-    };
+    // onChange = (event, { newValue }) => {
+    //     this.setState({
+    //         value: newValue
+    //     });
+    // };
 
-    // Autosuggest will call this function every time you need to update suggestions.
-    // You already implemented this logic above, so just use it.
-    onSuggestionsFetchRequested = ({ value }) => {
-        this.setState({
-            suggestions: getSuggestions(value)
-        });
-    };
+    // // Autosuggest will call this function every time you need to update suggestions.
+    // // You already implemented this logic above, so just use it.
+    // onSuggestionsFetchRequested = ({ value }) => {
+    //     this.setState({
+    //         suggestions: getSuggestions(value)
+    //     });
+    // };
 
-    // Autosuggest will call this function every time you need to clear suggestions.
-    onSuggestionsClearRequested = () => {
-        this.setState({
-            suggestions: []
-        });
-    };
+    // // Autosuggest will call this function every time you need to clear suggestions.
+    // onSuggestionsClearRequested = () => {
+    //     this.setState({
+    //         suggestions: []
+    //     });
+    // };
 
 
     componentDidMount() {
@@ -166,9 +166,9 @@ class Home extends Component {
         console.log('This is the filtered list\n', temp)
         newState.items = temp
         this.setState(newState)
-        console.log('Updated State\n', this.state.items)
+        console.log('Updated State\n', temp)
 
-        API.updateFridge(this.state.user, this.state.items)
+        API.updateFridge(this.state.user, temp)
             .then(res => {
                 console.log(res.status)
             })
@@ -204,16 +204,28 @@ class Home extends Component {
         })
     }
 
+    handleSuggestionSelect = (event) => {
+        // console.log(event.target)
+        const part1 = event.target.getElementsByTagName('span')[0].innerHTML
+        const part2 = event.target.getElementsByTagName('span')[1].innerHTML
+        const wholeWord = part1 + part2
+        console.log(wholeWord)
+    
+        this.setState({
+            search: wholeWord
+        })
+      }
+
     render() {
         const { value, suggestions } = this.state;
 
         // Autosuggest will pass through all these props to the input.
-        const inputProps = {
-            name: 'search',
-            placeholder: 'Search for an ingredient',
-            value: this.state.search,
-            onChange: this.handleInputChange
-        };
+        // const inputProps = {
+        //     name: 'search',
+        //     placeholder: 'Search for an ingredient',
+        //     value: this.state.search,
+        //     onChange: this.handleInputChange
+        // };
 
         return (
             // <Container maxWidth='lg'>
@@ -225,8 +237,8 @@ class Home extends Component {
                         fullWidth={true}
                         handleInputChange={this.handleInputChange}
                     /> */}
-                    {/* <SearchItems onChange={this.handleInputChange} /> */}
-                    <Autosuggest
+                    <SearchItems grabWord={this.handleSuggestionSelect} />
+                    {/* <Autosuggest
                         suggestions={suggestions}
                         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -234,7 +246,7 @@ class Home extends Component {
                         renderSuggestion={renderSuggestion}
                         inputProps={inputProps}
                         alwaysRenderSuggestions={true}
-                    />
+                    /> */}
                     <Button
                         type='submit'
                         onClick={this.handleAddToFridge}>
