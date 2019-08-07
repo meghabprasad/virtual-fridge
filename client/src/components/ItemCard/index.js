@@ -85,16 +85,47 @@ export default function ItemCard(props) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Button 
-        data-id={props.id} 
-        color='secondary' 
-        className='remove-btn'
-        onClick={props.handleRemove}>
-        <i className="material-icons">
-          remove_circle_outline
+        <div data-id={props.id}>
+          <Button
+            data-id={props.id}
+            color='primary'
+            className='add-btn'>
+            <span data-id={props.id} onClick={props.handleAdd}>
+              <i className="material-icons">
+                add_circle_outline
         </i>
-        Remove from Fridge
-        </Button>  
+              Add 1
+            </span>
+          </Button>
+        </div>
+        <br />
+        <div data-id={props.id}>
+          <Button
+            data-id={props.id}
+            color='secondary'
+            className='remove-btn'
+          >
+            <span data-id={props.id} onClick={props.handleRemove}>
+              <i className="material-icons">
+                remove_circle_outline
+        </i>
+              Remove 1
+           </span>
+          </Button>
+          <br />
+          <Button
+            data-id={props.id}
+            color='secondary'
+            className='delete-btn'
+          >
+            <span data-id={props.id} onClick={props.handleDelete}>
+              <i class="material-icons">
+                delete
+              </i>
+              Delete from Fridge
+           </span>
+          </Button>
+        </div>
       </Collapse>
     </Card>
   );
