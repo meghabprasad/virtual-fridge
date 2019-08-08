@@ -26,13 +26,13 @@ https://fathomless-ocean-69359.herokuapp.com/
 
 ### Author
 
-Author : [Jacobs](https://github.com/gljacobs)
+Author : [Megha](https://github.com/meghabprasad))
 
-Author : [Chloe](https://github.com/chloezhouny)
+Author : [Greyson](https://github.com/greysongy)
 
-Author : [Matt](https://github.com/matkuh)
+Author : [Chris](https://github.com/BAANG)
 
-Author : [Megha](https://github.com/meghabprasad)
+Author : [Matthew](https://github.com/matthewryanhagarty)
 
 ### Site Images
 
