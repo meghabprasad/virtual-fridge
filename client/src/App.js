@@ -43,15 +43,16 @@ class App extends Component {
                 path="/"
                 render={({ location }) => (
                   <Fragment>
-
+                    
                     <Tabs value={location.pathname} style={tabStyle} indicatorColor='secondary'>
-
+                      <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
                       <Tab label="Profile" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
                       <Tab value="/recipes" label="Recipes" component={Link} to="/recipes" />
                       <Tab label="Groceries" value="/grocery" component={Link} to="/grocery" />
+                      </div>
                     </Tabs>
-
+                  
                     <Switch>
                       <Route exact path="/" component={Login} />
                       <Route exact path="/home" component={Home} />
