@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
@@ -11,20 +10,19 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    minHeight: "5%",
-    minWidth: "15%",
+    maxHeight: "500px",
+    maxWidth: "225px",
     float: "left",
     margin: "10px"
 
   },
   media: {
     height: 0,
-    paddingTop: "100%" // 16:9
+    paddingTop: "20px" // 16:9
 
   },
   expand: {
@@ -40,10 +38,10 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
-  image: {
-    width: "100px",
-    height: "100px"
-  }
+  // image: {
+  //   width: "100px",
+  //   height: "100px"
+  // }
 }));
 
 export default function ItemCard(props) {
@@ -62,7 +60,7 @@ export default function ItemCard(props) {
       />
       <CardContent>
         <Typography paragraph>Quantity: {props.quantity}</Typography>
-        <Typography paragraph>Expires in {props.expiration} days!</Typography>
+        {/* <Typography paragraph>Expires in {props.expiration} days!</Typography> */}
       </CardContent>
       {/* <CardMedia className={classes.image}
         className={classes.media}
@@ -90,26 +88,25 @@ export default function ItemCard(props) {
             data-id={props.id}
             color='primary'
             className='add-btn'>
-            <span data-id={props.id} onClick={props.handleAdd}>
+            <span className='button-html' data-id={props.id} onClick={props.handleAdd}>
               <i className="material-icons">
                 add_circle_outline
         </i>
-              Add 1
+              Add
             </span>
           </Button>
-        </div>
-        <br />
-        <div data-id={props.id}>
+        {/* </div>
+        <div data-id={props.id}> */}
           <Button
             data-id={props.id}
             color='secondary'
             className='remove-btn'
           >
-            <span data-id={props.id} onClick={props.handleRemove}>
+            <span className='button-html' data-id={props.id} onClick={props.handleRemove}>
               <i className="material-icons">
                 remove_circle_outline
         </i>
-              Remove 1
+              Remove
            </span>
           </Button>
           <br />
@@ -118,11 +115,11 @@ export default function ItemCard(props) {
             color='secondary'
             className='delete-btn'
           >
-            <span data-id={props.id} onClick={props.handleDelete}>
+            <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
               <i class="material-icons">
                 delete
               </i>
-              Delete from Fridge
+              Delete Item
            </span>
           </Button>
         </div>
