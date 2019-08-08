@@ -114,8 +114,7 @@ export default withAuth(class Home extends Component {
         return (
           <div className="home-container" style={homeStyle}>
 
-          <h1 className="title" style={titleStyle}>Welcome to Fridge, {this.state.userinfo.given_name}</h1>
-          <h2>Signed in as: {this.state.userinfo.email}</h2>
+          <h1 className="title" style={titleStyle}>Welcome to Fridge!</h1>
           <br />
           <Button onClick={this.logout}size="large" className={useStyles.margin} variant="outlined" color="secondary">
           Logout
