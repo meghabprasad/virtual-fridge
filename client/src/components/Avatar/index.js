@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Avatar from '@material-ui/core/Avatar';
 
 const imageStyle = {
     height: '100%', 
@@ -7,7 +8,7 @@ const imageStyle = {
     position: 'relative'
 }
 
-class Thumbnail extends Component {
+class PicAvatar extends Component {
 
     state = {
         name: "", 
@@ -39,11 +40,11 @@ class Thumbnail extends Component {
     render() {
         return (
             
-                <img style = {imageStyle} src = {this.state.url === ""? 'https://t4.ftcdn.net/jpg/01/19/60/67/500_F_119606707_zuSz6XRfX4s3x2BVhjpehqYtXLOISCGI.jpg': this.state.url}></img>
-            
+                // <Avatar style = {imageStyle} src = {this.state.url === ""? 'https://t4.ftcdn.net/jpg/01/19/60/67/500_F_119606707_zuSz6XRfX4s3x2BVhjpehqYtXLOISCGI.jpg': this.state.url}></Avatar>
+                <Avatar src = 'https://pixabay.com/get/57e7d44b4856a814f6da8c7dda79367d173cdce35b546c4870297ed6974ecc50b1_1280.jpg'></Avatar>   
         )
     }
 
 }
 
-export default Thumbnail;
+export default PicAvatar;
