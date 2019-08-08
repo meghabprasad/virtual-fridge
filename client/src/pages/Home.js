@@ -6,18 +6,20 @@ import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
 import "./style.css";
 import Button from '@material-ui/core/Button';
+import { Typography } from "@material-ui/core";
 
 
 const homeStyle = {
 
-    width: '80vw',
+    width: '60vw',
     height: '100%',
     margin: '0 auto',
     marginTop: "20px",
     marginBottom: "20px",
-    borderStyle: "solid",
-    borderWidth: "1px",
-    overflow: "scroll",
+    borderRadius: "10px",
+    // borderStyle: "solid",
+    // borderWidth: "1px",
+    overflow: "auto",
     color: "black",
     padding: "20px",
     fontSize: "15px",
@@ -30,14 +32,14 @@ const homeStyle = {
 
 const homeStyle2 = {
 
-    width: '80vw',
+    width: '50vw',
     height: '100%',
     margin: '0 auto',
     marginTop: "10px",
     marginBottom: "20px",
     borderStyle: "solid",
     borderWidth: "1px",
-    overflow: "scroll",
+    overflow: "auto",
     color: "black",
     paddingTop: "15px",
     paddingBottom: "20px",
@@ -52,11 +54,13 @@ const homeStyle2 = {
 const titleStyle = {
     fontSize: "40px",
     color: "black",
-    margin: "0auto",
+    margin: "0 auto",
     textAlign: "center",
     marginBottom: "20px",
     marginTop: "10px",
     fontFamily: 'Beth Ellen',
+    backgroundColor: 'lightseagreen',
+    width: '80%'
     // fontFamily: 'Libre Caslon Text',
     // fontFamily: 'Playfair Display',
     // fontFamily: 'Source Serif Pro',
@@ -154,18 +158,17 @@ export default withAuth(class Home extends Component {
     handleRemoveItem = event => {
         console.log(this.state.items)
         const itemID = event.target.getAttribute('data-id')
-        console.log('this is the itemid', itemID)
         const newState = { ...this.state }
         const temp = [];
         newState.items.map(item => {
             if (item.name === itemID) {
-                console.log(item, 'this is the item')
                 item.quantity--;
                 temp.push(item)
                 console.log(`Remove 1 from quantity of ${item.name}`)
             } else {
                 temp.push(item)
             }
+            return console.log('Completed remove function.')
         })
         newState.items = temp
         this.setState(newState)
@@ -180,7 +183,7 @@ export default withAuth(class Home extends Component {
             })
     }
 
-    handleDeleteCard = event => { //TODO: Create delete card button
+    handleDeleteCard = event => {
         const itemID = event.target.getAttribute('data-id')
         console.log(itemID)
         const newState = { ...this.state }
@@ -219,7 +222,7 @@ export default withAuth(class Home extends Component {
             })
     }
 
-    handleInputChange = event => { //TODO: Go to SearchItems and adjust to grab form input values.
+    handleInputChange = event => {
         const { name, value } = event.target
         this.setState({
             [name]: value
@@ -227,7 +230,6 @@ export default withAuth(class Home extends Component {
     }
 
     handleSuggestionSelect = (event) => {
-        // console.log(event.target, 'this is the event target')
         if (event.target) {
             const wholeWord = event.target.innerText
             console.log(wholeWord)
@@ -245,11 +247,14 @@ export default withAuth(class Home extends Component {
             return (
                 <div className="home-container" style={homeStyle}>
                     <h1 className="title" style={titleStyle}>Welcome to Your Fridge, {this.state.userinfo.given_name}</h1>
-                    <h2>Signed in as: {this.state.userinfo.email}</h2>
+                    <Typography variant='caption'>
+                    Signed in as: {this.state.userinfo.email}    
+                    </Typography>
                     <br />
                     <span>
                         <SearchItems grabWord={this.handleSuggestionSelect} />
                         <Button
+                            id='add-to-fridge'
                             type='submit'
                             onClick={this.handleAddToFridge}>
                             + Add to Fridge
