@@ -90,7 +90,6 @@ export default function TitlebarGridList(props) {
                         {/* <img src = "https://pixabay.com/get/54e5d3414c53b108f5d084609629347c163dd8ed564c704c732a79d4924dc25a_1280.jpg"></img> */}
                         <GridListTileBar
                             title={ingredient.name}
-                            subtitle={<span>by: {ingredient.name}</span>}
                             // actionIcon={
                             //     <IconButton aria-label={`info about ${ingredient}`} className={classes.icon}>
                             //         <InfoIcon />
