@@ -6,6 +6,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Beth+Ellen|Domine|Homemade+Apple|Julius+Sans+One|Libre+Caslon+Text|Montserrat+Alternates|Noto+Serif+JP|Old+Standard+TT|Playfair+Display|Sorts+Mill+Goudy|Source+Serif+Pro&display=swap" rel="stylesheet">
 
     <!-- /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -19,23 +20,26 @@
 <body>
   <div class="container">
 
-
+  <h4>You Are Here</h4>
+  <br>
+  <a href="#images"><img id="arrow-right" src="../client/src/arrow-down.png" style="height: 50px"></a>
   <div id="map">
   </div>
 
   <br>
-  <br>
+<h4>Grab Your Groceries Here</h4>
+<br>
+<a href="#images"><img id="arrow-right" src="../client/src/arrow-down.png" style="height: 50px"></a>
+<br><br><br><br><br><br><br>
 
   <div id="images">
   </div>
 
-
-  <img id="testImage">
-
-</div>
-
-
 <style>
+
+  #arrow-right {
+    vertical-align: top;
+  }
 
     #image {
     
@@ -46,9 +50,10 @@
     
     #map {
     
-      height: 300px;
-      width: 500px;
+      height: 250px;
+      width: 450px;
       margin: 0 auto;
+      margin-top: 20px;
       text-align: center;
       border: 1px;
       border-style: solid;
@@ -57,9 +62,33 @@
     .container {
     
       margin: 0 auto;
+      width: 1000px;
       text-align: center;
+      vertical-align: top;
       
     }
+
+    .card {
+
+      padding: 10px;
+      margin: 5px;
+      width: 300px;
+      height: 400px;
+      display:inline-block;
+      vertical-align: top;
+
+
+    }
+
+    h4 {
+      font-family: 'Beth Ellen', cursive;
+    }
+
+    .p {
+      font-size: 5px;
+    }
+
+
     
     </style>
 
@@ -142,44 +171,30 @@
               console.log("i can see this")
 
               if (placeResponse.result.photos) {
-                for (var i = 0; i < placeResponse.result.length; i++) {
-
+                // for (var i = 0; i < placeResponse.result.photos.length; i++) {
                   console.log("but i cannot see this")
-
-
                   // console.log("We'd insert a photo here");
                   // console.log("Our current element", placeResponse.result.photos[i]);
-
-                  var name = placeResponse.result[i].name
-                  var location = placeResponse.result[i].formatted_address
-                  var phone = placeResponse.result[i].formatted_phone_number
-
+                  var name = placeResponse.result.name
+                  var location = placeResponse.result.formatted_address
+                  var phone = placeResponse.result.formatted_phone_number
                   console.log("I am places:", name, location, phone)
-
-
         var image = $(`<img src = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeResponse.result.photos[0].photo_reference}&key=AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs" style="height: 200px; width: 200px; margin: 10px">`);
         
         var card = $("<div>")
         card.addClass("card shadow")
-
         var cardContain = $("<div>")
-
         image.addClass("img")
-
         card.append("<h5>" + name + "</h5>")
         card.append("<p>" + location + "</p>")
         card.append("<p>" + phone + "</p>")
         card.append(image)
-        cardContain.append(card)
-
         //$("body").append(`<img src ='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeResponse.result.photos[i].photo_referencekey}AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs'>`);
-        $("#images").append(cardContain)
-
+        $("#images").append(card)
                   //$("body").append(`<img src ='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeResponse.result.photos[i].photo_referencekey}AIzaSyC4EuVzFkBgprsMRiEZsiC-dQ9d23nBWRs'>`);
                   // $("#images").append(image)
-                }
+                // }
               }
-
             })
         }
       })

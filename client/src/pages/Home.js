@@ -58,6 +58,7 @@ const titleStyle = {
     textAlign: "center",
     marginBottom: "20px",
     marginTop: "10px",
+    verticalAlign: 'top',
     fontFamily: 'Beth Ellen',
     backgroundColor: 'lightseagreen',
     width: '80%'
