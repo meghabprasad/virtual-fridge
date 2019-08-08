@@ -13,6 +13,8 @@ import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from '@material-ui/core/Button';
 import { fontFamily } from "@material-ui/system";
+import axios from "axios";
+import Thumbnail from '../thumbnail';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -57,6 +59,27 @@ export default function ItemCard(props) {
     setExpanded(!expanded);
   }
 
+  // function convertIngredientToImage(str) {
+  //   console.log()
+  //   axios.get('https://pixabay.com/api/?key=13232685-3497331870f507199a8b8b2b7&q=' + str + '&image_type=photo')
+  //       .then(res => {
+  //           console.log("Response", res);
+  //           // console.log("Our url", res.data.hits[0].largeImageURL);
+  //           if (res.data.hits) {
+  //               if (res.data.hits[0]) {
+  //                   console.log("Our url", res.data.hits[0].largeImageURL);
+  //                   return res.data.hits[0].largeImageURL;
+  //               }
+  //           }
+  //           else {
+  //               return "";
+  //           }
+  //       })
+    //console.log("This function ran");
+    // return 'https://pixabay.com/get/57e7d44b4856a814f6da8c7dda79367d173cdce35b546c4870297ed6974ecc50b1_1280.jpg';
+    // return 'https://pixabay.com/get/55e5d1444a55a414f6da8c7dda79367d173cdce35b546c4870297ed69748c55fba_1280.jpg';
+// }
+
   return (
     <Card raised className={classes.card}>
       <CardHeader
@@ -75,10 +98,10 @@ export default function ItemCard(props) {
       </CardContent>
       <CardMedia className={classes.image}
         className={classes.media}
-        image='https://www.fillmurray.com/100/100'
+        
         // image={props.imageLink}
         title={props.name}
-      />
+      ><Thumbnail name = {props.name}></Thumbnail></CardMedia>
 
       <CardActions disableSpacing>
       <div data-id={props.id}>

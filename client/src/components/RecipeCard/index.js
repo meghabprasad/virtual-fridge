@@ -52,11 +52,16 @@ export default function RecipeReviewCard(props) {
     function linkClick() {
         // console.log("The link button was clicked");
         // console.log("props", props);
-        window.open('https://www.nba.com/article/2019/08/07/durant-discusses-warriors-injury-brooklyn-free-agency-decision', "_blank");
+        // window.open('https://www.nba.com/article/2019/08/07/durant-discusses-warriors-injury-brooklyn-free-agency-decision', "_blank");
         // axios.get('https://api.spoonacular.com/recipes/716429/information&apiKey=65fdffe480f1407ea6a4a3b80c3df511')
         //     .then(res => {
         //         console.log("res", res);
         //     })
+        axios.get('https://api.spoonacular.com/recipes/' + props.id + '/information?includeNutrition=false&apiKey=41e31ae78aea452c86c7c8a9e248aa2f')
+            .then(res => {
+                console.log("Response", res);
+                window.open(res.data.sourceUrl, 'blank');
+            })
     }
 
     return (
