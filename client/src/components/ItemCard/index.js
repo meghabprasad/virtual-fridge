@@ -11,15 +11,17 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from '@material-ui/core/Button';
+import { fontFamily } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxHeight: "500px",
-    maxWidth: "225px",
+    minWidth: '8vw',
+    minHeight: "12vw",
+    maxHeight: "12vw",
+    maxWidth: "8vw",
     float: "left",
-    margin: "10px"
+    margin: "1vw"
 
   },
   media: {
@@ -40,10 +42,11 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
-  // image: {
-  //   width: "100px",
-  //   height: "100px"
-  // }
+  image: {
+    width: "50px",
+    height: "50px",
+    borderRadius: '20px',
+  }
 }));
 
 export default function ItemCard(props) {
@@ -55,47 +58,40 @@ export default function ItemCard(props) {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card raised className={classes.card}>
       <CardHeader
         action={<IconButton aria-label="settings" />}
-        title={props.name}
+        title={props.name.toUpperCase()}
+        titleTypographyProps={{
+          align:'center',
+          variant:'overline',
+          display:'inline',
+          classes:'card-header'
+        }}
       />
       <CardContent>
-        <Typography paragraph>Quantity: {props.quantity}</Typography>
+        <Typography variant='subtitle2' align='center'>Quantity: {props.quantity}</Typography>
         {/* <Typography paragraph>Expires in {props.expiration} days!</Typography> */}
       </CardContent>
-      {/* <CardMedia className={classes.image}
+      <CardMedia className={classes.image}
         className={classes.media}
-        image={props.imageLink}
+        image='https://www.fillmurray.com/100/100'
+        // image={props.imageLink}
         title={props.name}
-      /> */}
+      />
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" />
-        <IconButton aria-label="share" />
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <div data-id={props.id}>
+      <div data-id={props.id}>
           <Button
             data-id={props.id}
             color='primary'
             className='add-btn'>
-            <span className='button-html' data-id={props.id} onClick={props.handleAdd}>
-              <i className="material-icons">
+            <div className='button-html' data-id={props.id} onClick={props.handleAdd}>
+              <i className="material-icons" data-id={props.id}>
                 add_circle_outline
         </i>
-              {/* Add 1 */}
-            </span>
+              {/* Add */}
+            </div>
           </Button>
         {/* </div>
         <div data-id={props.id}> */}
@@ -104,12 +100,12 @@ export default function ItemCard(props) {
             color='secondary'
             className='remove-btn'
           >
-            <span className='button-html' data-id={props.id} onClick={props.handleRemove}>
-              <i className="material-icons">
+            <div className='button-html' data-id={props.id} onClick={props.handleRemove}>
+              <i className="material-icons" data-id={props.id}>
                 remove_circle_outline
         </i>
-              {/* Remove 1 */}
-           </span>
+              {/* Remove */}
+           </div>
           </Button>
           <br />
           <Button
@@ -118,14 +114,14 @@ export default function ItemCard(props) {
             className='delete-btn'
           >
             <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
-              <i class="material-icons">
+              <i class="material-icons" data-id={props.id}> 
                 delete
               </i>
               Delete Item
            </span>
           </Button>
         </div>
-      </Collapse>
+      </CardActions>
     </Card>
   );
 }

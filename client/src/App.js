@@ -22,8 +22,11 @@ const config = {
 
 const tabStyle = {
   margin: "0auto",
-  textAlign: "center"
-}
+  textAlign: "center",
+  backgroundColor: 'goldenrod',
+  color: 'white',
+  }
+
 
 class App extends Component {
   render() {
@@ -41,7 +44,7 @@ class App extends Component {
                 render={({ location }) => (
                   <Fragment>
                     
-                    <Tabs value={location.pathname} style={tabStyle}>
+                    <Tabs value={location.pathname} style={tabStyle} indicatorColor='secondary'>
                       <Tab label="Login" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
                       <Tab value="/recipes" label="Recipes" component={Link} to="/recipes"/>
