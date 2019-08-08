@@ -45,7 +45,7 @@ class App extends Component {
                   <Fragment>
                     
                     <Tabs value={location.pathname} style={tabStyle} indicatorColor='secondary'>
-                      <Tab label="Login" value="/" component={Link} to="/" />
+                      <Tab label="Profile" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
                       <Tab value="/recipes" label="Recipes" component={Link} to="/recipes"/>
                       <Tab label="Groceries" value="/grocery" component={Link} to="/grocery" />
