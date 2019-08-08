@@ -65,30 +65,10 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 - Express is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs and is the standard server framework for Node.js
 
-6. [Handlebars](https://www.npmjs.com/package/handlebars)
 
-- Handlebars.js is an extension to the Mustache templating language. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code. It's one of the more popular Githib/NPM packages with over 5.3 million downloads within the last month!
-
-7. [Okta](https://www.okta.com/)
+6. [Okta](https://www.okta.com/)
 
 - A user authentication service that allows developers to build identity controls into applications, website web services and  devices.
-- Create a file called `.env` in the project root and add the following variables, replacing the values with your own from the previous steps.
-
-```
-    HOST_URL=http://localhost:3000
-    ORG_URL=https://dev-123456.oktapreview.com
-    CLIENT_ID=okta-application-client-id
-    CLIENT_SECRET=okta-application-client-secret
-    REGISTRATION_TOKEN=okta-registration-api-token
-    USER_PROFILE_TOKEN=okta-user-profile-api-token
-    APP_SECRET=something-random
-```
-
-8. [AWS-SDK S3](https://aws.amazon.com/sdk-for-node-js/)
-
-- Amazon S3, or amazon simple storage service allows you to store and retrieve any amount of data at any time, anywhere from the web. 
-- Buckets and objects are resources, and Amazon S3 provides APIs for you to manage them. You can create a bucket and upload objects using the Amazon S3 API
-
 
 ## How it Works
 
