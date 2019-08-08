@@ -84,3 +84,11 @@ User creates an account on the signup page and inputs name, email, password
 
 User is then redirected to answer security questions and then to back to the profile page!
 
+#### Adding Ingredients to Fridge
+
+User starts typing ingredient into the search bar and an autosuggest dropdown is displayed with all the ingredients containing the letters in the search bar.
+
+After selecting the ingredient from the dropdown, users can add item to the fridge
+
+
+
