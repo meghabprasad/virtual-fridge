@@ -95,7 +95,7 @@ export default function RecipeReviewCard(props) {
                 <CardContent>
                     {props.missingIngredients.map((ingredient, i) => {
                         return (
-                            <div>
+                            <div style = {{display: 'flex'}}>
                                 <p>{ingredient.name}</p>
                                 <PicAvatar
                                 key = {i * Math.random() * 1000}
