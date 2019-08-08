@@ -3,8 +3,8 @@
 #fridge-container {
     background-image: url(../pages/fridge-background.png);
     position: static;
-    background-size: 100% 310px;
-    height: 500px;
+    background-size: 100% 245px;
+    height: 600px;
     /* background-size: cover; */
     background-repeat: repeat-y;
     
