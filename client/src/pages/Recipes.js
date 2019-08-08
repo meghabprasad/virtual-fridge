@@ -120,6 +120,7 @@ export default withAuth(class Recipes extends Component {
         const apiKey = '&apiKey=65fdffe480f1407ea6a4a3b80c3df511'; // TODO: Hide with dotenv
         const queryParams = this.state.ingredients.join('+,')
         const queryURL = ('https://api.spoonacular.com/recipes/findByIngredients?ingredients=' + queryParams + apiKey).split(' ').join('+')
+        console.log('QUERY URL', queryURL);
 
         this.setState({
             queryURL: queryURL
@@ -204,6 +205,7 @@ export default withAuth(class Recipes extends Component {
                                             name = {result.title}
                                             image = {result.image}
                                             missingIngredients = {result.missedIngredients}
+                                            id = {result.id}
                                         ></RecipeCard>
                                     </div>
                         

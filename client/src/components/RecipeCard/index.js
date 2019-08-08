@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PicAvatar from '../Avatar';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -48,6 +49,16 @@ export default function RecipeReviewCard(props) {
         setExpanded(!expanded);
     }
 
+    function linkClick() {
+        // console.log("The link button was clicked");
+        // console.log("props", props);
+        window.open('https://www.nba.com/article/2019/08/07/durant-discusses-warriors-injury-brooklyn-free-agency-decision', "_blank");
+        // axios.get('https://api.spoonacular.com/recipes/716429/information&apiKey=65fdffe480f1407ea6a4a3b80c3df511')
+        //     .then(res => {
+        //         console.log("res", res);
+        //     })
+    }
+
     return (
         <Card className={classes.card}>
             <CardHeader
@@ -77,7 +88,7 @@ export default function RecipeReviewCard(props) {
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                 </IconButton>
-                <IconButton aria-label="share">
+                <IconButton aria-label="share" onClick = {linkClick}>
                     <ShareIcon />
                 </IconButton>
                 <IconButton
