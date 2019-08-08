@@ -47,7 +47,9 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 ### Tech Used
 
+
 1. [JavaScript](https://www.javascript.com/)
+
 2. [Node](https://nodejs.org/en/)
 
 - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. 
@@ -65,12 +67,16 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 - Express is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs and is the standard server framework for Node.js
 
+6. [React](https://reactjs.org)
+- React is a component based library that makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
-6. [Okta](https://www.okta.com/)
+7. [Okta](https://www.okta.com/)
 
 - A user authentication service that allows developers to build identity controls into applications, website web services and  devices.
 
-## How it Works
+8. [Material UI](https://material-ui.com)
+- Material Design is a popular React UI framework that makes for faster and easier web development. Material UI uses more grid-based layouts, responsive animations and transitions, padding, and depth effects such as lighting and shadows.
+# How it Works
 
 #### User Login
 
@@ -80,7 +86,7 @@ User is then redirected to answer security questions and then to back to the pro
 
 #### Choose Routine
 
-User can pick a routine and add it to their current routines.  It will then show up on their profile and the user can edit or add workouts by day.
+
 
 #### Update Stats and Post
 
