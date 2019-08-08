@@ -74,7 +74,7 @@ export default function TitlebarGridList(props) {
 
     const converter = convertIngredientToImage;
 
-    var newIngredients = props.ingredients.slice(50, 200);
+    var newIngredients = props.ingredients;
 
 
     return (
@@ -84,13 +84,13 @@ export default function TitlebarGridList(props) {
                     <ListSubheader component="div">Choose your Ingredients</ListSubheader>
                 </GridListTile>
                 {newIngredients.map((ingredient, i) => (
-                    <GridListTile key={ingredient + i}>
-                        <Thumbnail name = {ingredient}></Thumbnail>
+                    <GridListTile key={ingredient.name + i}>
+                        <Thumbnail name = {ingredient.name}></Thumbnail>
                         {/* <img src={converter(ingredient)} alt={ingredient} /> */}
                         {/* <img src = "https://pixabay.com/get/54e5d3414c53b108f5d084609629347c163dd8ed564c704c732a79d4924dc25a_1280.jpg"></img> */}
                         <GridListTileBar
-                            title={ingredient}
-                            subtitle={<span>by: {ingredient}</span>}
+                            title={ingredient.name}
+                            subtitle={<span>by: {ingredient.name}</span>}
                             // actionIcon={
                             //     <IconButton aria-label={`info about ${ingredient}`} className={classes.icon}>
                             //         <InfoIcon />
@@ -98,7 +98,7 @@ export default function TitlebarGridList(props) {
                             // }
                             actionIcon = {<Checkbox 
                                 onClick={(event) => props.handleCheckBox(event)}
-                                value = {ingredient}
+                                value = {ingredient.name}
                                 // try to make the checkboxes red
                                 ></Checkbox>}
                         />

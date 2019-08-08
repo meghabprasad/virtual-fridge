@@ -31,7 +31,6 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     updateFridge: function (req, res) { 
-        // Update may provide better functionality when updating the list of ingredients contained within fridges. ie Load the array into this.state to render onto page => update this.state after adding or removing an item => push the new updated this.state into the database, updating the key of ingredients/products with the new one with the updated item array.
         const filter = { 'user_id': req.params.id}
         const update = { 'items': req.body }
         const options = { upsert: true}
