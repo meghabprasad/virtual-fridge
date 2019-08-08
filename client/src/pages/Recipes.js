@@ -13,6 +13,8 @@ import Container from '@material-ui/core/Container';
 import "./style.css";
 import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
+import API from '../utils/api';
+
 
 //something about how the children don't all have a unique key
 
@@ -77,7 +79,8 @@ export default withAuth(class Recipes extends Component {
           ingredients: [],
           displayResults: false,
           results: [], 
-          queryURL: ""
+          queryURL: "",
+          items: []
         };
       this.checkAuthentication = this.checkAuthentication.bind(this);
       this.checkAuthentication();
@@ -93,6 +96,35 @@ export default withAuth(class Recipes extends Component {
         console.log(this.state.userinfo);
         this.setState({ authenticated });
       }
+    }
+
+    async checkAuthentication() {
+        const authenticated = await this.props.auth.isAuthenticated();
+        if (authenticated !== this.state.authenticated) {
+            const userinfo = await this.props.auth.getUser();
+            this.setState({ userinfo });
+            console.log(this.state.userinfo);
+            this.setState({ authenticated });
+            if (this.state.authenticated) {
+                this.setState({ user: userinfo.email })
+            }
+            console.log(this.state)
+
+            console.log('This is the state.user', this.state.user)
+            API.createFridge(this.state.user)
+                .then(res => {
+                    console.log(res, 'create fridge')
+                })
+            API.getFridge(this.state.user)
+                .then(res => {
+                    console.log(res, 'res')
+                    console.log('Succesfully accessed fridge data.\n', res.data)
+                    this.setState({ items: res.data[0].items }, () => console.log('This is the updated fridge', this.state.items))
+                })
+                .catch(err => {
+                    throw err
+                })
+        }
     }
   
     componentDidUpdate() {
@@ -204,7 +236,7 @@ export default withAuth(class Recipes extends Component {
                 {/* <Container> */}
                 <Grid container spacing={2} style={ingredientsStyle}>
                     <Grid item xs={6}>
-                        <VerticalGridList ingredients={ingredients} handleCheckBox={this.handleCheckBox}></VerticalGridList>
+                        <VerticalGridList ingredients={this.state.items} handleCheckBox={this.handleCheckBox}></VerticalGridList>
                     </Grid>
                     <br></br>
                     <Grid className="right-side" style={rightStyle} item xs={6}>
