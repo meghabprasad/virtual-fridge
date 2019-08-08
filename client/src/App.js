@@ -25,47 +25,53 @@ const tabStyle = {
   textAlign: "center",
   backgroundColor: 'goldenrod',
   color: 'white',
-  }
+}
 
 
 class App extends Component {
   render() {
     return (
       <div>
-      <BrowserRouter>
-        <div className="App">
+        <BrowserRouter>
+          <div className="App">
 
-          <Security issuer={config.issuer}
-            client_id={config.client_id}
-            redirect_uri={config.redirect_uri}>
+            <Security issuer={config.issuer}
+              client_id={config.client_id}
+              redirect_uri={config.redirect_uri}>
 
-              <Route 
-                path = "/"
+              <Route
+                path="/"
                 render={({ location }) => (
                   <Fragment>
-                    
+
                     <Tabs value={location.pathname} style={tabStyle} indicatorColor='secondary'>
                       <Tab label="Login" value="/" component={Link} to="/" />
                       <Tab label="Home" value="/home" component={Link} to="/home" />
-                      <Tab value="/recipes" label="Recipes" component={Link} to="/recipes"/>
+                      <Tab value="/recipes" label="Recipes" component={Link} to="/recipes" />
                       <Tab label="Groceries" value="/grocery" component={Link} to="/grocery" />
                     </Tabs>
-                    
+
                     <Switch>
-                      <Route exact path="/" component = {Login} />
-                      <Route exact path="/home" component = {Home} />
-                      <Route exact path="/recipes" component = {Recipes} />
-                      <Route exact path="/grocery" component = {Grocery}/>
-                      <Route exact path='/implicit/callback' component={ImplicitCallback}/>
+                      <Route exact path="/" component={Login} />
+                      <Route exact path="/home" component={Home} />
+                      <Route exact path="/recipes" component={Recipes} />
+                      {/* <Route exact path="/grocery" component = {Grocery}/> */}
+                      <Route exact path="/grocery" render={() => {
+                        window.open(
+                          'https://greysongy.github.io/googleGroceries/',
+                          '_blank' // <- This is what makes it open in a new window.
+                        );
+                      }} />
+                      <Route exact path='/implicit/callback' component={ImplicitCallback} />
                     </Switch>
                   </Fragment>
                 )}
-                />
+              />
 
-          </Security>
+            </Security>
 
-        </div>
-      </BrowserRouter>
+          </div>
+        </BrowserRouter>
       </div>
     )
   }
