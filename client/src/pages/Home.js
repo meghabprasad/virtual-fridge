@@ -257,7 +257,8 @@ export default withAuth(class Home extends Component {
                         <Button
                             id='add-to-fridge'
                             type='submit'
-                            onClick={this.handleAddToFridge}>
+                            onClick={this.handleAddToFridge}
+                            variant="outlined" color="secondary">
                             + Add to Fridge
                     </Button>
                     </span>

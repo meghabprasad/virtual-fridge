@@ -14,6 +14,9 @@ import Container from '@material-ui/core/Container';
 import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
 
+import Button from '@material-ui/core/Button';
+
+
 //something about how the children don't all have a unique key
 
 
@@ -193,7 +196,14 @@ export default withAuth(class Recipes extends Component {
                     <br></br>
                     <Grid item xs={6}>
                         {/* <div className="button-holder" style={buttonHolder}> */}
-                        <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
+                        <Button
+                            style={buttonStyle}
+                            type='submit'
+                            onClick={this.handleSubmit}
+                            variant="outlined" color="secondary">
+                            Find Recipes
+                        </Button>
+                        {/* <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button> */}
 
                         {this.state.displayResults ? <div style={{ display: "flex", height: "1000px" }}>{this.state.results.map((result, i) => {
                             return (
