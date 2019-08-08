@@ -13,6 +13,7 @@ import Container from '@material-ui/core/Container';
 
 import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
+
 //something about how the children don't all have a unique key
 
 
@@ -135,7 +136,7 @@ export default withAuth(class Recipes extends Component {
                     results: res.data,
                     displayResults: true
                 })
-                console.log("The first recipe is ", this.state.results[0]);
+                console.log("The first recipe is ", this.state.results[1]);
             })
             .catch(err => {
                 throw err
@@ -193,12 +194,17 @@ export default withAuth(class Recipes extends Component {
                         {/* <div className="button-holder" style={buttonHolder}> */}
                         <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
 
-                        {this.state.displayResults ? <div style={{ display: "flex", height: "1000px" }}>{this.state.results.map(result => {
+                        {this.state.displayResults ? <div style={{ display: "flex", height: "1000px" }}>{this.state.results.map((result, i) => {
                             return (
 
                                 
                                     <div style={{ width: "200px !important" }}>
-                                        <RecipeCard ></RecipeCard>
+                                        <RecipeCard 
+                                            key = {i}
+                                            name = {result.title}
+                                            image = {result.image}
+                                            missingIngredients = {result.missedIngredients}
+                                        ></RecipeCard>
                                     </div>
                         
                             )

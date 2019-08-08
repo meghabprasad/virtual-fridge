@@ -74,7 +74,7 @@ export default function TitlebarGridList(props) {
 
     const converter = convertIngredientToImage;
 
-    var newIngredients = props.ingredients.slice(100, 200);
+    var newIngredients = props.ingredients.slice(150, 225);
 
     return (
         <div className={classes.root}>
@@ -84,7 +84,7 @@ export default function TitlebarGridList(props) {
                 </GridListTile>
                 {newIngredients.map((ingredient, i) => (
                     <GridListTile key={ingredient + i}>
-                        <Thumbnail name = {ingredient}></Thumbnail>
+                        <Thumbnail name = {ingredient} avatar = {false}></Thumbnail>
                         {/* <img src={converter(ingredient)} alt={ingredient} /> */}
                         {/* <img src = "https://pixabay.com/get/54e5d3414c53b108f5d084609629347c163dd8ed564c704c732a79d4924dc25a_1280.jpg"></img> */}
                         <GridListTileBar
