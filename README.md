@@ -84,10 +84,3 @@ User creates an account on the signup page and inputs name, email, password
 
 User is then redirected to answer security questions and then to back to the profile page!
 
-#### Choose Routine
-
-
-
-#### Update Stats and Post
-
-User can update their weight lost and hours spent on a routine and then make a post about the workout.
