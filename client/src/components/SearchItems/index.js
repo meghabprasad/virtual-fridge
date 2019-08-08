@@ -80,10 +80,11 @@ function getSuggestionValue(suggestion) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderStyle: "solid",
-    borderWidth: "1px",
+    // borderStyle: "solid",
+    // borderWidth: "1px",
     height: 75,
-    minWidth: "200px",
+    borderTop: '1px solid',
+    minWidth: "240px",
     maxWidth: "400px",
     paddingTop: 10,
     paddingBottom: 30,
@@ -155,7 +156,7 @@ export default function IntegrationAutosuggest(props) {
 
   return (
     <div className={classes.root}>
-            <Typography>Search for an Ingredient</Typography>
+            <Typography variant='overline'>Search for an Ingredient</Typography>
       <div className={classes.divider} />
       <Autosuggest
         {...autosuggestProps}

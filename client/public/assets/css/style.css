@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    background-color: #f7ede2 !important;
   }
   
   input {
@@ -42,4 +43,42 @@ body {
 
   .MuiCardContent-root {
     padding: 2px !important;
+  }
+
+  /* 
+  Chris's CSS Edits as of 8/7
+  */
+
+  .MuiTabs-indicator {
+    background-color: black !important;
+    height: 4.5px !important;
+  }
+
+  .MuiCardHeader-root {
+    padding: 5px !important;
+    text-align: center !important;
+    background-color: lightseagreen;
+  }
+
+  .remove-btn, .add-btn {
+    padding: 0px !important;
+  }
+
+  .button-html {
+    padding: 2px !important;
+    width: 100%;
+  }
+
+  #add-to-fridge {
+    border: 1px solid black !important;
+  }
+
+  .MuiCardMedia-root {
+    height: 50px !important;
+  }
+
+
+  .MuiTypography-overline {
+    font-size: 14px !important;
+    font-weight: 500 !important
   }
