@@ -10,3 +10,12 @@
     
 }
 
+.MuiIconButton-colorSecondary {
+
+    color: #f50057 !important;
+}
+
+.MuiCheckbox-root {
+
+    color: #f50057 !important;
+}
