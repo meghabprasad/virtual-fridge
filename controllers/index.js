@@ -38,7 +38,7 @@ module.exports = {
         console.log('Update fridge req.params:', req.params,
         '\nreq.body:', req.body)
         db.Fridge
-            .findAndModfiy(filter, update, options)
+            .findAndModify(filter, update, options)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
