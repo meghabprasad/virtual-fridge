@@ -10,7 +10,7 @@ import VerticalGridList from "../components/verticalGridList";
 import Grid from '@material-ui/core/Grid';
 import RecipeCard from "../components/RecipeCard";
 import Container from '@material-ui/core/Container';
-
+import "./style.css";
 import { withAuth } from '@okta/okta-react';
 import NotSignedIn from "../components/NotSignedIn";
 
@@ -18,15 +18,12 @@ import NotSignedIn from "../components/NotSignedIn";
 
 
 const ingredientsStyle = {
-    width: '80vw',
-    height: '50vh',
+    width: '100vw',
+    height: '100%',
     margin: '0 auto',
     marginTop: "20px",
     marginBottom: "20px",
-    borderStyle: "solid",
-    borderWidth: "1px",
-    overflow: "scroll",
-    color: "black",
+    // overflow: "scroll",
     padding: "20px",
     fontSize: "10px"
 
@@ -51,6 +48,25 @@ const buttonStyle = {
     margin: "20px",
     variant: "contained",
     color: "primary"
+}
+
+const cardStyle = {
+
+    margin: '0 auto',
+    textAlign: "center",
+    marginTop: "5px",
+    marginBottom: "5px",
+    padding: "10px",
+    fontSize: "10px",
+    float: "left"    
+}
+
+const rightStyle = {
+
+maxHeight: "700px",
+overflow: "scroll",
+margin: "0 auto",
+
 }
 
 export default withAuth(class Recipes extends Component {
@@ -186,21 +202,21 @@ export default withAuth(class Recipes extends Component {
 
             <div>
                 {/* <Container> */}
-                <Grid container spacing={3}>
+                <Grid container spacing={2} style={ingredientsStyle}>
                     <Grid item xs={6}>
                         <VerticalGridList ingredients={ingredients} handleCheckBox={this.handleCheckBox}></VerticalGridList>
                     </Grid>
                     <br></br>
-                    <Grid item xs={6}>
+                    <Grid className="right-side" style={rightStyle} item xs={6}>
                         {/* <div className="button-holder" style={buttonHolder}> */}
                         <button onClick={this.handleSubmit} style={buttonStyle}>Submit</button>
 
-                        {this.state.displayResults ? <div style={{ display: "flex", height: "1000px" }}>{this.state.results.map((result, i) => {
+                        {this.state.displayResults ? <div style={{float: "left"}}>{this.state.results.map((result, i) => {
                             return (
 
                                 
-                                    <div style={{ width: "200px !important" }}>
-                                        <RecipeCard 
+                                    <div style={cardStyle}>
+                                        <RecipeCard
                                             key = {i}
                                             name = {result.title}
                                             image = {result.image}
