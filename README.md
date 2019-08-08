@@ -53,14 +53,13 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. 
 - Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser
 
-3. [MySQL2](https://www.npmjs.com/package/mysql2)
+3. [MongoDB](https://www.mongodb.com/)
 
-- MySQL (structured query language) is a relational database management system (RDBMS) and is considered one of the worlds most popular open source databases. MySQL2 project is a continuation of MySQL-Native. Protocol parser code was rewritten from scratch and api changed to match popular mysqljs/mysql. 
+- MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. 
 
-4. [Sequelize/Cli](http://docs.sequelizejs.com/)
+4. [Mongoose](https://mongoosejs.com)
 
-- Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more. The Sequelize Command Line Interface (CLI) ships support for migrations and project bootstrapping.
-
+- Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
 
 5. [Express](https://expressjs.com/)
 
