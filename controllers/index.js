@@ -38,7 +38,7 @@ module.exports = {
         console.log('Update fridge req.params:', req.params,
         '\nreq.body:', req.body)
         db.Fridge
-            .findOneAndUpdate(filter, update, options)
+            .findAndModfiy(filter, update, options)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
@@ -57,7 +57,7 @@ module.exports = {
         const filter = { user_id: req.params.id}
         const update = { family_id: req.body }
         db.User
-            .findOneAndUpdate({ filter, update }) // TODO: Change to 'family_id'
+            .findAndModify({ filter, update }) // TODO: Change to 'family_id'
             .then(dbModel => resjson(dbModel))
             .catch(err => res.status(422).json(err))
     },

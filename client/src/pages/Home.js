@@ -154,12 +154,10 @@ export default withAuth(class Home extends Component {
     handleRemoveItem = event => {
         console.log(this.state.items)
         const itemID = event.target.getAttribute('data-id')
-        console.log('this is the itemid', itemID)
         const newState = { ...this.state }
         const temp = [];
         newState.items.map(item => {
             if (item.name === itemID) {
-                console.log(item, 'this is the item')
                 item.quantity--;
                 temp.push(item)
                 console.log(`Remove 1 from quantity of ${item.name}`)
@@ -181,7 +179,7 @@ export default withAuth(class Home extends Component {
             })
     }
 
-    handleDeleteCard = event => { //TODO: Create delete card button
+    handleDeleteCard = event => {
         const itemID = event.target.getAttribute('data-id')
         console.log(itemID)
         const newState = { ...this.state }
@@ -220,7 +218,7 @@ export default withAuth(class Home extends Component {
             })
     }
 
-    handleInputChange = event => { //TODO: Go to SearchItems and adjust to grab form input values.
+    handleInputChange = event => {
         const { name, value } = event.target
         this.setState({
             [name]: value
@@ -228,7 +226,6 @@ export default withAuth(class Home extends Component {
     }
 
     handleSuggestionSelect = (event) => {
-        // console.log(event.target, 'this is the event target')
         if (event.target) {
             const wholeWord = event.target.innerText
             console.log(wholeWord)

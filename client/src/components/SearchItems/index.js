@@ -151,7 +151,6 @@ export default function IntegrationAutosuggest(props) {
     onSuggestionsClearRequested: handleSuggestionsClearRequested,
     getSuggestionValue,
     renderSuggestion,
-    // onSuggestionSelected: props.grabWord
   };
 
   return (
