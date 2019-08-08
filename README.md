@@ -36,15 +36,11 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 ### Site Images
 
-<img src="images/wireframess.png">
+<img src="./client/src/images/Login.png">
 
-<img src="images/wireframess1.png">
+<img src="./client/src/images/HomePage.png">
 
-<img src="images/wireframess2.png">
-
-<img src="images/wireframess3.png">
-
-
+<img src="./client/src/images/RecipePage.png">
 
 <br>
 
