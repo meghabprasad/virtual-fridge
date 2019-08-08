@@ -74,7 +74,9 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 #### User Login
 
-User creates an account on the signup page and inputs name, email, password, height, weight, and can upload an image. 
+User creates an account on the signup page and inputs name, email, password 
+
+User is then redirected to answer security questions and then to back to the profile page!
 
 #### Choose Routine
 
