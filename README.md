@@ -24,9 +24,9 @@ https://fathomless-ocean-69359.herokuapp.com/
         - npm run client 
     - Run `mongod` in the background
 
-### Author
+### Contributors
 
-Author : [Megha](https://github.com/meghabprasad))
+Author : [Megha](https://github.com/meghabprasad)
 
 Author : [Greyson](https://github.com/greysongy)
 
