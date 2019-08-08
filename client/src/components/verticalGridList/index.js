@@ -74,7 +74,7 @@ export default function TitlebarGridList(props) {
 
     const converter = convertIngredientToImage;
 
-    var newIngredients = props.ingredients.slice(150, 225);
+    var newIngredients = props.ingredients.slice(75, 200);
 
     return (
         <div className={classes.root}>
