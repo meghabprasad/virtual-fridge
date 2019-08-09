@@ -183,11 +183,12 @@ export default withAuth(class Recipes extends Component {
         console.log("The handle submit function ran");
         axios.get(this.state.queryURL)
             .then(res => {
-                console.log("Our response was", res);
+                console.log("Our recipe response was", res);
                 this.setState({
                     results: res.data,
                     displayResults: true
                 })
+                console.log("Did we get to after set state?");
                 console.log("The first recipe is ", this.state.results[1]);
             })
             .catch(err => {

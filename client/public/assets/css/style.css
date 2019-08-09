@@ -75,8 +75,7 @@ body {
   }
 
   .MuiCardMedia-root {
-    height: 15% !important;
-    padding-top: 0px !important
+    height: 50px !important;
   }
 
 
