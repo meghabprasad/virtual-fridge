@@ -52,6 +52,7 @@ const titleStyle = {
   marginBottom: "20px",
   marginTop: "10px",
   fontFamily: 'Beth Ellen',
+  backgroundColor: 'lightseagreen'
   // fontFamily: 'Libre Caslon Text',
   // fontFamily: 'Playfair Display',
   // fontFamily: 'Source Serif Pro',

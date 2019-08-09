@@ -17,6 +17,7 @@ import API from '../utils/api';
 
 
 import Button from '@material-ui/core/Button';
+import { borderRadius } from "@material-ui/system";
 
 
 //something about how the children don't all have a unique key
@@ -31,7 +32,6 @@ const ingredientsStyle = {
     // overflow: "scroll",
     padding: "20px",
     fontSize: "10px"
-
 }
 
 const titleStyle = {
@@ -239,7 +239,7 @@ export default withAuth(class Recipes extends Component {
                 {/* <Container> */}
                 <Grid container spacing={2} style={ingredientsStyle}>
                     <Grid item xs={6}>
-                        <VerticalGridList ingredients={this.state.items} handleCheckBox={this.handleCheckBox}></VerticalGridList>
+                        <VerticalGridList style={{borderRadius: '10px'}} ingredients={this.state.items} handleCheckBox={this.handleCheckBox}></VerticalGridList>
                     </Grid>
                     <br></br>
                     <Grid className="right-side" style={rightStyle} item xs={6}>

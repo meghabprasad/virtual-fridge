@@ -28,6 +28,19 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const titleStyle = {
+    fontSize: "40px",
+    color: "black",
+    margin: "0 auto",
+    textAlign: "center",
+    marginBottom: "20px",
+    marginTop: "10px",
+    verticalAlign: 'top',
+    fontFamily: 'Beth Ellen',
+    backgroundColor: 'lightseagreen',
+    width: '80%'
+}
+
 /**
  * The example data is structured as follows:
  *
@@ -81,7 +94,9 @@ export default function TitlebarGridList(props) {
         <div className={classes.root}>
             <GridList cellHeight={180} cols = {3} className={classes.gridList}>
                 <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
-                    <ListSubheader component="div">Choose your Ingredients</ListSubheader>
+                    <ListSubheader component="div">
+                        <h1 className="title" style={titleStyle}>What would you like to make?</h1>
+                        </ListSubheader>
                 </GridListTile>
                 {newIngredients.map((ingredient, i) => (
                     <GridListTile key={ingredient.name + i}>

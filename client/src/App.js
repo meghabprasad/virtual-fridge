@@ -24,7 +24,7 @@ const tabStyle = {
   margin: "0auto",
   textAlign: "center",
   backgroundColor: 'goldenrod',
-  color: 'white',
+  color: 'white'
 }
 
 
@@ -74,6 +74,8 @@ class App extends Component {
 
           </div>
         </BrowserRouter>
+        <div id='footer'>
+        </div>
       </div>
     )
   }

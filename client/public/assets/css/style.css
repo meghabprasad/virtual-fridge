@@ -51,7 +51,8 @@ body {
 
   .MuiTabs-indicator {
     background-color: black !important;
-    height: 4.5px !important;
+    height: 3px !important;
+    width: 100vw !important;
   }
 
   .MuiCardHeader-root {
@@ -94,5 +95,11 @@ body {
     color: gray !important;
   }
   
-
-  
+  #footer {
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    border-top: 4px solid black;
+    background-color: #daa520;
+    width: 100vw;
+  }
