@@ -60,7 +60,7 @@ body {
     background-color: lightseagreen;
   }
 
-  .remove-btn, .add-btn {
+  .remove-btn, .add-btn, .delete-btn {
     padding: 0px !important;
   }
 
@@ -74,11 +74,25 @@ body {
   }
 
   .MuiCardMedia-root {
-    height: 50px !important;
+    height: 15% !important;
+    padding-top: 0px !important
   }
 
 
   .MuiTypography-overline {
     font-size: 14px !important;
-    font-weight: 500 !important
+    font-weight: 500 !important;
+    line-height: 12px !important;
   }
+
+  .action-btns {
+    position: relative !important;
+    left: -8px !important;
+  }
+
+  .delete-btn {
+    color: gray !important;
+  }
+  
+
+  

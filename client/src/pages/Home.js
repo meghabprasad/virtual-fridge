@@ -21,7 +21,7 @@ const homeStyle = {
     // borderWidth: "1px",
     overflow: "auto",
     color: "black",
-    padding: "20px",
+    // padding: "20px",
     fontSize: "15px",
     textAlign: "center",
     backgroundColor: "white",

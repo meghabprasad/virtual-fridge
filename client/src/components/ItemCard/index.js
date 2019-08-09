@@ -12,8 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import { fontFamily } from "@material-ui/system";
-import axios from "axios";
 import Thumbnail from '../thumbnail';
 
 const useStyles = makeStyles(theme => ({
@@ -59,91 +59,79 @@ export default function ItemCard(props) {
     setExpanded(!expanded);
   }
 
-  // function convertIngredientToImage(str) {
-  //   console.log()
-  //   axios.get('https://pixabay.com/api/?key=13232685-3497331870f507199a8b8b2b7&q=' + str + '&image_type=photo')
-  //       .then(res => {
-  //           console.log("Response", res);
-  //           // console.log("Our url", res.data.hits[0].largeImageURL);
-  //           if (res.data.hits) {
-  //               if (res.data.hits[0]) {
-  //                   console.log("Our url", res.data.hits[0].largeImageURL);
-  //                   return res.data.hits[0].largeImageURL;
-  //               }
-  //           }
-  //           else {
-  //               return "";
-  //           }
-  //       })
-    //console.log("This function ran");
-    // return 'https://pixabay.com/get/57e7d44b4856a814f6da8c7dda79367d173cdce35b546c4870297ed6974ecc50b1_1280.jpg';
-    // return 'https://pixabay.com/get/55e5d1444a55a414f6da8c7dda79367d173cdce35b546c4870297ed69748c55fba_1280.jpg';
-// }
-
   return (
     <Card raised className={classes.card}>
       <CardHeader
-        action={<IconButton aria-label="settings" />}
+        // action={
+        //   <Button
+        //   data-id={props.id}
+        //   className='delete-btn'>
+        //   <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
+        //     <i class="material-icons" data-id={props.id}> 
+        //       cancel
+        //     </i>
+        //  </span>
+        // </Button>
+        // }
         title={props.name.toUpperCase()}
         titleTypographyProps={{
-          align:'center',
-          variant:'overline',
-          display:'inline',
-          classes:'card-header'
-        }}
-      />
+          align: 'center',
+          variant: 'overline',
+          display: 'inline',
+          classes: 'card-header'
+        }} />
       <CardContent>
         <Typography variant='subtitle2' align='center'>Quantity: {props.quantity}</Typography>
         {/* <Typography paragraph>Expires in {props.expiration} days!</Typography> */}
       </CardContent>
       <CardMedia className={classes.image}
         className={classes.media}
-        
+
         // image={props.imageLink}
         title={props.name}
-      ><Thumbnail name = {props.name}></Thumbnail></CardMedia>
+      ><Thumbnail name={props.name}></Thumbnail></CardMedia>
 
       <CardActions disableSpacing>
-      <div data-id={props.id}>
-          <Button
-            data-id={props.id}
-            color='primary'
-            className='add-btn'>
-            <div className='button-html' data-id={props.id} onClick={props.handleAdd}>
-              <i className="material-icons" data-id={props.id}>
-                add_circle_outline
+        <Grid container spacing={0} data-id={props.id} className='action-btns'>
+          <Grid item xs={4}>
+            <Button
+              data-id={props.id}
+              color='primary'
+              className='add-btn'>
+              <div className='button-html' data-id={props.id} onClick={props.handleAdd}>
+                <i className="material-icons" data-id={props.id}>
+                  add_circle_outline
         </i>
-              {/* Add */}
-            </div>
-          </Button>
-        {/* </div>
-        <div data-id={props.id}> */}
-          <Button
-            data-id={props.id}
-            color='secondary'
-            className='remove-btn'
-          >
-            <div className='button-html' data-id={props.id} onClick={props.handleRemove}>
-              <i className="material-icons" data-id={props.id}>
-                remove_circle_outline
+                {/* Add */}
+              </div>
+            </Button>
+          </Grid>
+          <Grid item xs={4}>
+            <Button
+              data-id={props.id}
+              color='secondary'
+              className='remove-btn'
+            >
+              <div className='button-html' data-id={props.id} onClick={props.handleRemove}>
+                <i className="material-icons" data-id={props.id}>
+                  remove_circle_outline
         </i>
-              {/* Remove */}
-           </div>
-          </Button>
-          <br />
-          <Button
-            data-id={props.id}
-            color='secondary'
-            className='delete-btn'
-          >
-            <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
-              <i class="material-icons" data-id={props.id}> 
-                delete
-              </i>
-              Delete Item
-           </span>
-          </Button>
-        </div>
+                {/* Remove */}
+              </div>
+            </Button>
+          </Grid>
+          <Grid item xs={4}>
+            <Button
+              data-id={props.id}
+              className='delete-btn'>
+              <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
+                <i class="material-icons" data-id={props.id}>
+                  delete
+            </i>
+              </span>
+            </Button>
+          </Grid>
+        </Grid>
       </CardActions>
     </Card>
   );
