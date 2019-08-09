@@ -49,6 +49,8 @@ export default function RecipeReviewCard(props) {
         setExpanded(!expanded);
     }
 
+    console.log("The props are", props);
+
     function linkClick() {
         // console.log("The link button was clicked");
         // console.log("props", props);
