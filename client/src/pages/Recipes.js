@@ -34,15 +34,6 @@ const ingredientsStyle = {
     fontSize: "10px"
 }
 
-const titleStyle = {
-    fontSize: "40px",
-    color: "black",
-    margin: "0auto",
-    textAlign: "center",
-    marginBottom: "40px",
-    marginTop: "40px"
-}
-
 const buttonHolder = {
     textAlign: "center",
     margin: "0auto",
@@ -168,7 +159,8 @@ export default withAuth(class Recipes extends Component {
     };
 
     createQuery = () => {
-        const apiKey = '&apiKey=65fdffe480f1407ea6a4a3b80c3df511'; // TODO: Hide with dotenv
+        // const apiKey = '&apiKey=65fdffe480f1407ea6a4a3b80c3df511'; // TODO: Hide with dotenv
+        const apiKey = '&apiKey=41e31ae78aea452c86c7c8a9e248aa2f'; // TODO: Hide with dotenv
         const queryParams = this.state.ingredients.join('+,')
         const queryURL = ('https://api.spoonacular.com/recipes/findByIngredients?ingredients=' + queryParams + apiKey).split(' ').join('+')
         console.log('QUERY URL', queryURL);
@@ -239,7 +231,7 @@ export default withAuth(class Recipes extends Component {
                 {/* <Container> */}
                 <Grid container spacing={2} style={ingredientsStyle}>
                     <Grid item xs={6}>
-                        <VerticalGridList style={{borderRadius: '10px'}} ingredients={this.state.items} handleCheckBox={this.handleCheckBox}></VerticalGridList>
+                        <VerticalGridList ingredients={this.state.items} handleCheckBox={this.handleCheckBox}></VerticalGridList>
                     </Grid>
                     <br></br>
                     <Grid className="right-side" style={rightStyle} item xs={6}>
