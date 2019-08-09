@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fridge
+As young adults, we spend hundreds of dollars eating out when we could 
+easily make food with the ingredients at home.
 
-## Available Scripts
+FRIDGE allows users to:
 
-In the project directory, you can run:
+    - Store and keep track of the ingredients in their fridge 
+    - Search for recipes based on the ingredients in the fridge 
+    - Look for nearby grocery stores to purchase the missing ingredients needed 
+      for the recipe
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Link to delopyed site
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+https://fathomless-ocean-69359.herokuapp.com/
 
-### `npm test`
+## To run locally 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - Clone Repo
+    - In the porject repository terminal: 
+        - npm install
+        - node server.js 
+        - npm run client 
+    - Run `mongod` in the background
 
-### `npm run build`
+### Contributors
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Author : [Megha](https://github.com/meghabprasad)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Author : [Greyson](https://github.com/greysongy)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Author : [Chris](https://github.com/BAANG)
 
-### `npm run eject`
+Author : [Matthew](https://github.com/matthewryanhagarty)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Site Images
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="./client/src/images/Login.png">
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="./client/src/images/HomePage.png">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="./client/src/images/RecipePage.png">
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Tech Used
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. [JavaScript](https://www.javascript.com/)
 
-### Analyzing the Bundle Size
+2. [Node](https://nodejs.org/en/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. 
+- Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser
 
-### Making a Progressive Web App
+3. [MongoDB](https://www.mongodb.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. 
 
-### Advanced Configuration
+4. [Mongoose](https://mongoosejs.com)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
 
-### Deployment
+5. [Express](https://expressjs.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Express is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs and is the standard server framework for Node.js
 
-### `npm run build` fails to minify
+6. [React](https://reactjs.org)
+- React is a component based library that makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+7. [Okta](https://www.okta.com/)
+
+- A user authentication service that allows developers to build identity controls into applications, website web services and  devices.
+
+8. [Material UI](https://material-ui.com)
+- Material Design is a popular React UI framework that makes for faster and easier web development. Material UI uses more grid-based layouts, responsive animations and transitions, padding, and depth effects such as lighting and shadows.
+# How it Works
+
+#### User Login
+
+User creates an account on the signup page and inputs name, email, password 
+
+User is then redirected to answer security questions and then to back to the profile page!
+
+#### Adding Ingredients to Fridge
+
+User starts typing ingredient into the search bar and an autosuggest dropdown is displayed with all the ingredients containing the letters in the search bar.
+
+After selecting the ingredient from the dropdown, users can add item to the fridge
+
+
+
