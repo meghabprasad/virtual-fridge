@@ -62,17 +62,6 @@ export default function ItemCard(props) {
   return (
     <Card raised className={classes.card}>
       <CardHeader
-        // action={
-        //   <Button
-        //   data-id={props.id}
-        //   className='delete-btn'>
-        //   <span className='button-html2' data-id={props.id} onClick={props.handleDelete}>
-        //     <i class="material-icons" data-id={props.id}> 
-        //       cancel
-        //     </i>
-        //  </span>
-        // </Button>
-        // }
         title={props.name.toUpperCase()}
         titleTypographyProps={{
           align: 'center',
@@ -86,8 +75,7 @@ export default function ItemCard(props) {
       </CardContent>
       <CardMedia className={classes.image}
         className={classes.media}
-
-        // image={props.imageLink}
+        className='home-page-card'
         title={props.name}
       ><Thumbnail name={props.name}></Thumbnail></CardMedia>
 
