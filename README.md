@@ -36,20 +36,6 @@ FRIDGE allows users to:
 
 ### Contributors
 
-Megha Prasad
-
-[Github](https://github.com/meghabprasad)
-
-[LinkedIn](https://www.linkedin.com/in/megha-bindiganavale/)
-
-Greyson
-
-Author : [Greyson: Git](https://github.com/greysongy)
-
-Author : [Chris: Git](https://github.com/BAANG)
-
-Author : [Matthew: Git](https://github.com/matthewryanhagarty)
-
 ######
 
 | Author | Github  | Linkedin
@@ -92,6 +78,19 @@ Author : [Matthew: Git](https://github.com/matthewryanhagarty)
 
 8. [Material UI](https://material-ui.com)
 - Material Design is a popular React UI framework that makes for faster and easier web development. Material UI uses more grid-based layouts, responsive animations and transitions, padding, and depth effects such as lighting and shadows.
+
+9. [Spoonacular API](https://spoonacular.com/food-api)
+-Spoonacular provides simple queries to retrieve relevant recipes, along with associated info (like images and original URLs). For our application, the most relevant feature was being able to query based on a list of ingredients (in your fridge) that you'd like to include in a recipe, and then get responses with the msising ingredients. 
+
+10. [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
+-An easily embedabble APi that helps find a current user's location, and can subsequently embed a visual to help them find nearby grocery stores. This feature is currently being converted to React. 
+
+11. [Google Places API](https://developers.google.com/places/web-service/intro)
+-API to retrieve details/images about nearby locations. Queries can be filtered by type, and sorted by distance.
+
+12. [Postmates API](https://postmates.com/developer)
+-Feature under development, but is currently functioning in test mode. Designed so that users can directly order ingredients they're missing for a particular recipe.
+
 # How it Works
 
 #### User Login
