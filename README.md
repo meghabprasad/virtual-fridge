@@ -99,11 +99,27 @@ User creates an account on the signup page and inputs name, email, password
 
 User is then redirected to answer security questions and then to back to the profile page!
 
-#### Adding Ingredients to Fridge
+#### Adding Ingredients to Your Fridge
 
 User starts typing ingredient into the search bar and an autosuggest dropdown is displayed with all the ingredients containing the letters in the search bar.
 
 After selecting the ingredient from the dropdown, users can add item to the fridge
+
+#### Searching for Recipes by Ingredients
+
+User checks off the boxes of the ingredients they'd like to include in a recipe, then clicks find recipes. 
+
+For every recipe, the user can click on the downward arrow to view missing ingredients. 
+
+They can also click on the link button to get hte original source of the recipe (with detailed instructions).
+
+#### Finding Nearby Grocery Stores
+
+When the user clicks on the grocery tab, they're redirected to a page that will ask them for their location. 
+
+If they allow the sharing of their location, the visual map creates a marker to show them where they are. 
+
+A list of the 20 nearest grocery stores simultaneously populates on the page (with additional contact info provided).
 
 
 
