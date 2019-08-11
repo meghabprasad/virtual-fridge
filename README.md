@@ -6,6 +6,16 @@
 As young adults, we spend hundreds of dollars eating out when we could 
 easily make food with the ingredients at home.
 
+### Site Images
+
+<img src="./client/src/images/Login.png">
+
+<img src="./client/src/images/HomePage.PNG">
+
+<img src="./client/src/images/RecipePage.PNG">
+
+<br>
+
 FRIDGE allows users to:
 
     - Store and keep track of the ingredients in their fridge 
@@ -26,24 +36,30 @@ FRIDGE allows users to:
 
 ### Contributors
 
-Author : [Megha](https://github.com/meghabprasad)
+Megha Prasad
 
-Author : [Greyson](https://github.com/greysongy)
+[Github](https://github.com/meghabprasad)
 
-Author : [Chris](https://github.com/BAANG)
+[LinkedIn](https://www.linkedin.com/in/megha-bindiganavale/)
 
-Author : [Matthew](https://github.com/matthewryanhagarty)
+Greyson
 
-### Site Images
+Author : [Greyson: Git](https://github.com/greysongy)
 
-<img src="./client/src/images/Login.png">
+Author : [Chris: Git](https://github.com/BAANG)
 
-<img src="./client/src/images/HomePage.PNG">
+Author : [Matthew: Git](https://github.com/matthewryanhagarty)
 
-<img src="./client/src/images/RecipePage.PNG">
+######
 
-<br>
+| Author | Github  | Linkedin
+| --------------- | --------- | -----------
+| Megha Prasad | https://github.com/minalk24 | https://www.linkedin.com/in/megha-bindiganavale/
+| Greyson Gerhard-Young | https://github.com/greysongy | https://www.linkedin.com/in/greyson-gerhard-young/ 
+| Christopher Celestino | https://github.com/BAANG) | https://www.linkedin.com/in/christopher-celestino/
+| Matthew Ryan Haggarty | https://github.com/matthewryanhagarty |  https://www.linkedin.com/in/matthewryanhagarty/
 
+######
 
 ### Tech Used
 
