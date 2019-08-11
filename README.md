@@ -6,13 +6,15 @@
 As young adults, we spend hundreds of dollars eating out when we could 
 easily make food with the ingredients at home.
 
-### Site Images
+### Our Site
 
 <img src="./client/src/images/Login.png">
 
-<img src="./client/src/images/HomePage.PNG">
+<img src="./client/src/images/ingredients2.png">
 
 <img src="./client/src/images/RecipePage.PNG">
+
+<img src = "./client/src/images/grocery2.png">
 
 <br>
 
@@ -80,32 +82,32 @@ FRIDGE allows users to:
 - Material Design is a popular React UI framework that makes for faster and easier web development. Material UI uses more grid-based layouts, responsive animations and transitions, padding, and depth effects such as lighting and shadows.
 
 9. [Spoonacular API](https://spoonacular.com/food-api)
--Spoonacular provides simple queries to retrieve relevant recipes, along with associated info (like images and original URLs). For our application, the most relevant feature was being able to query based on a list of ingredients (in your fridge) that you'd like to include in a recipe, and then get responses with the msising ingredients. 
+- Spoonacular provides simple queries to retrieve relevant recipes, along with associated info (like images and original URLs). For our application, the most relevant feature was being able to query based on a list of ingredients (in your fridge) that you'd like to include in a recipe, and then get responses with the msising ingredients. 
 
 10. [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
--An easily embedabble APi that helps find a current user's location, and can subsequently embed a visual to help them find nearby grocery stores. This feature is currently being converted to React. 
+- An easily embedabble APi that helps find a current user's location, and can subsequently embed a visual to help them find nearby grocery stores. This feature is currently being converted to React. 
 
 11. [Google Places API](https://developers.google.com/places/web-service/intro)
--API to retrieve details/images about nearby locations. Queries can be filtered by type, and sorted by distance.
+- API to retrieve details/images about nearby locations. Queries can be filtered by type, and sorted by distance.
 
 12. [Postmates API](https://postmates.com/developer)
--Feature under development, but is currently functioning in test mode. Designed so that users can directly order ingredients they're missing for a particular recipe.
+- Feature under development, but is currently functioning in test mode. Designed so that users can directly order ingredients they're missing for a particular recipe.
 
 # How it Works
 
-#### User Login
+## User Login
 
 User creates an account on the signup page and inputs name, email, password 
 
 User is then redirected to answer security questions and then to back to the profile page!
 
-#### Adding Ingredients to Your Fridge
+## Adding Ingredients to Your Fridge
 
 User starts typing ingredient into the search bar and an autosuggest dropdown is displayed with all the ingredients containing the letters in the search bar.
 
 After selecting the ingredient from the dropdown, users can add item to the fridge
 
-#### Searching for Recipes by Ingredients
+## Searching for Recipes by Ingredients
 
 User checks off the boxes of the ingredients they'd like to include in a recipe, then clicks find recipes. 
 
@@ -113,7 +115,7 @@ For every recipe, the user can click on the downward arrow to view missing ingre
 
 They can also click on the link button to get hte original source of the recipe (with detailed instructions).
 
-#### Finding Nearby Grocery Stores
+## Finding Nearby Grocery Stores
 
 When the user clicks on the grocery tab, they're redirected to a page that will ask them for their location. 
 
