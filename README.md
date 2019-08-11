@@ -42,7 +42,7 @@ FRIDGE allows users to:
 
 | Author | Github  | Linkedin
 | --------------- | --------- | -----------
-| Megha Prasad | https://github.com/minalk24 | https://www.linkedin.com/in/megha-bindiganavale/
+| Megha Prasad | https://github.com/meghabprasad | https://www.linkedin.com/in/megha-bindiganavale/
 | Greyson Gerhard-Young | https://github.com/greysongy | https://www.linkedin.com/in/greyson-gerhard-young/ 
 | Christopher Celestino | https://github.com/BAANG) | https://www.linkedin.com/in/christopher-celestino/
 | Matthew Ryan Haggarty | https://github.com/matthewryanhagarty |  https://www.linkedin.com/in/matthewryanhagarty/
