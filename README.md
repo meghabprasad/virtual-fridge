@@ -1,4 +1,8 @@
 # Fridge
+
+[Check out the deployed version!](https://fathomless-ocean-69359.herokuapp.com/)
+
+
 As young adults, we spend hundreds of dollars eating out when we could 
 easily make food with the ingredients at home.
 
@@ -10,10 +14,6 @@ FRIDGE allows users to:
       for the recipe
 
 <br>
-
-### Link to delopyed site
-
-https://fathomless-ocean-69359.herokuapp.com/
 
 ## To run locally 
 
@@ -38,9 +38,9 @@ Author : [Matthew](https://github.com/matthewryanhagarty)
 
 <img src="./client/src/images/Login.png">
 
-<img src="./client/src/images/HomePage.png">
+<img src="./client/src/images/HomePage.PNG">
 
-<img src="./client/src/images/RecipePage.png">
+<img src="./client/src/images/RecipePage.PNG">
 
 <br>
 
