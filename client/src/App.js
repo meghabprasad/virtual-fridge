@@ -14,9 +14,9 @@ import Container from '@material-ui/core/Container';
 
 
 const config = {
-  issuer: 'https://dev-622585.okta.com/oauth2/default',
+  issuer: 'https://dev-602352.okta.com/oauth2/default',
   redirect_uri: window.location.origin + '/implicit/callback',
-  client_id: '0oa11poaf4Foygnfy357',
+  client_id: '0oa13qmwgcnPlRnIN357',
   responseType: ['token', 'id_token']
 }
 
