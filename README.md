@@ -1,6 +1,6 @@
 # Fridge
 
-[Check out the deployed version!](https://fathomless-ocean-69359.herokuapp.com/)
+[Check out the deployed version!](https://team-fridge.herokuapp.com/)
 
 
 As young adults, we spend hundreds of dollars eating out when we could 
@@ -44,7 +44,7 @@ FRIDGE allows users to:
 | --------------- | --------- | -----------
 | Megha Prasad | https://github.com/meghabprasad | https://www.linkedin.com/in/megha-bindiganavale/
 | Greyson Gerhard-Young | https://github.com/greysongy | https://www.linkedin.com/in/greyson-gerhard-young/ 
-| Christopher Celestino | https://github.com/BAANG) | https://www.linkedin.com/in/christopher-celestino/
+| Christopher Celestino | https://github.com/BAANG| https://www.linkedin.com/in/christopher-celestino/
 | Matthew Ryan Haggarty | https://github.com/matthewryanhagarty |  https://www.linkedin.com/in/matthewryanhagarty/
 
 ######
